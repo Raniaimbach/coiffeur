@@ -6,7 +6,8 @@
 const translations = {
   de: {
     // Brand & Global Nav
-    "brand.sub": "Haute Coiffure · Schweiz",
+    "brand.title": "Haute coiffure CLEOPATRA",
+    "brand.sub": "Atelier Suisse · Zürich & Genève",
     "nav.home": "Atelier Startseite",
     "nav.services": "Dienstleistungen",
     "nav.lookbook": "Lookbook",
@@ -313,7 +314,8 @@ const translations = {
 
   en: {
     // Brand & Global Nav
-    "brand.sub": "Haute Coiffure · Suisse",
+    "brand.title": "Haute coiffure CLEOPATRA",
+    "brand.sub": "Atelier Suisse · Zürich & Genève",
     "nav.home": "Atelier Home",
     "nav.services": "Services",
     "nav.lookbook": "Lookbook",
