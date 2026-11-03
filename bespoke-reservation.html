@@ -81,10 +81,40 @@
 
       <!-- Right Header Actions & Language Switcher -->
       <div class="flex items-center gap-3 sm:gap-4">
-        <!-- Language Switcher Pill (DE | EN) -->
-        <div class="flex items-center border border-border-warm rounded-full p-0.5 bg-cream-surface/90 shadow-inner">
-          <button type="button" onclick="setLanguage('de')" class="lang-btn px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider transition-all" data-lang="de">DE</button>
-          <button type="button" onclick="setLanguage('en')" class="lang-btn px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider transition-all" data-lang="en">EN</button>
+        <!-- Language Selector: Global Symbol -->
+        <div class="relative" id="lang-selector-container">
+          <button 
+            type="button" 
+            id="lang-btn" 
+            onclick="toggleLanguageDropdown(event)" 
+            aria-expanded="false" 
+            aria-haspopup="true" 
+            aria-label="Select Language" 
+            class="w-10 h-10 rounded-full flex items-center justify-center text-espresso-dark hover:text-gold-antique bg-cream-surface/80 hover:bg-cream-surface border border-border-warm transition-all shadow-sm focus:outline-none focus:ring-1 focus:ring-gold-antique" 
+            title="Sprache / Language">
+            <span class="material-symbols-outlined text-[20px]">language</span>
+          </button>
+          
+          <div 
+            id="lang-dropdown" 
+            class="hidden absolute right-0 mt-2 w-36 bg-surface/95 backdrop-blur-xl rounded-2xl shadow-xl border border-border-warm p-1.5 z-50">
+            <button 
+              type="button" 
+              onclick="setLanguage('de'); closeLanguageDropdown();" 
+              class="lang-opt-btn w-full flex items-center justify-between px-3.5 py-2 text-xs rounded-xl font-medium transition-colors hover:bg-cream-surface text-espresso-dark" 
+              data-lang="de">
+              <span>Deutsch</span>
+              <span class="material-symbols-outlined text-[16px] text-gold-antique lang-opt-check" id="check-de">check</span>
+            </button>
+            <button 
+              type="button" 
+              onclick="setLanguage('en'); closeLanguageDropdown();" 
+              class="lang-opt-btn w-full flex items-center justify-between px-3.5 py-2 text-xs rounded-xl font-medium transition-colors hover:bg-cream-surface text-espresso-dark" 
+              data-lang="en">
+              <span>English</span>
+              <span class="material-symbols-outlined text-[16px] text-gold-antique lang-opt-check hidden" id="check-en">check</span>
+            </button>
+          </div>
         </div>
 
         <a href="index.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors hidden sm:flex items-center gap-1.5">
