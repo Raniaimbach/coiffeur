@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+  <title>Bespoke Reservation | Cleopatra Coiffeur Haute Atelier Suisse</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "espresso-dark": "#12100E",
+            "charcoal-soft": "#2D2A26",
+            "gold-antique": "#997A53",
+            "gold-shimmer": "#DFCCA8",
+            "cream-surface": "#F5F0E6",
+            "cream-muted": "#EBE4D5",
+            "border-warm": "#E4DDD0",
+            "editorial-muted": "#8A8379",
+            "surface": "#FBF9F5",
+            "on-surface": "#1B1C1A",
+            "on-surface-variant": "#4D4540",
+            "surface-container": "#EFEEEA",
+            "surface-container-low": "#F5F3EF",
+            "surface-container-high": "#EAE8E4",
+            "surface-container-highest": "#E4E2DE"
+          },
+          fontFamily: {
+            sans: ["Manrope", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { min-height: 100vh; overflow-x: hidden; }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F0E6; }
+    ::-webkit-scrollbar-thumb { background: #997A53; border-radius: 4px; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+  <script src="assets/js/i18n.js"></script>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen selection:bg-gold-shimmer selection:text-espresso-dark">
+
+  <!-- Desktop & Mobile Adaptive Top Header -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-border-warm/60 shadow-[0_1px_12px_rgba(0,0,0,0.03)] pt-safe">
+    <div class="max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-12 flex items-center justify-between">
+      
+      <!-- Logo & Return -->
+      <div class="flex items-center gap-3">
+        <button aria-label="Return" class="w-10 h-10 rounded-full bg-cream-surface flex items-center justify-center text-espresso-dark hover:bg-cream-muted transition-colors" onclick="if(history.length > 1) { history.back(); } else { window.location.href = 'index.html'; }">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+        </button>
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img alt="Cleopatra Coiffeur Logo" class="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-105" src="assets/images/logo.jpg"/>
+          <div class="flex flex-col">
+            <span class="text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none" data-i18n="brand.sub">Haute Atelier Suisse</span>
+            <span class="text-base md:text-lg text-espresso-dark font-serif tracking-tight leading-tight mt-0.5" data-i18n="res.page_title">Bespoke Reservation</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation Bar -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors" data-i18n="nav.home">Atelier Home</a>
+        <a href="service-menu.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors" data-i18n="nav.services">Services</a>
+        <a href="couture-lookbook.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors" data-i18n="nav.lookbook">Lookbook</a>
+        <a href="bespoke-reservation.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-espresso-dark relative after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:right-0 after:h-0.5 after:bg-gold-antique" data-i18n="nav.booking">Bespoke Booking</a>
+      </nav>
+
+      <!-- Right Header Actions & Language Switcher -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <!-- Language Switcher Pill (DE | EN) -->
+        <div class="flex items-center border border-border-warm rounded-full p-0.5 bg-cream-surface/90 shadow-inner">
+          <button type="button" onclick="setLanguage('de')" class="lang-btn px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider transition-all" data-lang="de">DE</button>
+          <button type="button" onclick="setLanguage('en')" class="lang-btn px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider transition-all" data-lang="en">EN</button>
+        </div>
+
+        <a href="index.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors hidden sm:flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+          <span data-i18n="nav.return">Return to Atelier</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content: Desktop 2-Column Booking Layout -->
+  <main class="flex-grow pt-24 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Left Column: The 4-Step Interactive Wizard (lg:col-span-8) -->
+        <div class="lg:col-span-8 flex flex-col space-y-8">
+          
+          <!-- Progress Step Header -->
+          <div class="bg-cream-surface rounded-2xl p-6 sm:p-8 border border-border-warm shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs uppercase tracking-[0.25em] text-gold-antique font-semibold" data-i18n="res.journey">Bespoke Atelier Journey</span>
+              <span class="text-xs text-on-surface-variant font-medium">
+                <span data-i18n="res.step_prefix">Step</span> <span class="text-espresso-dark font-bold font-serif text-sm" id="current-step-indicator">1</span> <span data-i18n="res.step_of">of 4</span>
+              </span>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="grid grid-cols-4 gap-2 mb-5">
+              <div class="h-1.5 rounded-full bg-gold-antique transition-all duration-300" id="prog-bar-1"></div>
+              <div class="h-1.5 rounded-full bg-surface-container-highest transition-all duration-300" id="prog-bar-2"></div>
+              <div class="h-1.5 rounded-full bg-surface-container-highest transition-all duration-300" id="prog-bar-3"></div>
+              <div class="h-1.5 rounded-full bg-surface-container-highest transition-all duration-300" id="prog-bar-4"></div>
+            </div>
+
+            <div>
+              <h2 class="text-2xl sm:text-3xl text-espresso-dark font-serif font-normal" id="step-title" data-i18n="res.step1_title">Select Bespoke Treatment</h2>
+              <p class="text-sm text-on-surface-variant mt-1.5 leading-relaxed" id="step-desc" data-i18n="res.step1_desc">
+                Immerse in tailor-crafted hair couture formulated exclusively with botanical elixirs.
+              </p>
+            </div>
+          </div>
+
+          <!-- STEP 1: Select Service -->
+          <section class="flex flex-col space-y-6" id="step-1-container">
+            <!-- Filter Chips -->
+            <div class="flex items-center gap-2 overflow-x-auto py-1 no-scrollbar">
+              <button class="service-filter-btn px-4 py-2 rounded-full bg-espresso-dark text-surface text-xs uppercase tracking-wider font-semibold shadow-sm flex-shrink-0" onclick="filterCategory('all', this)" data-i18n="menu.tab_all">All Creations</button>
+              <button class="service-filter-btn px-4 py-2 rounded-full bg-cream-surface text-on-surface-variant text-xs uppercase tracking-wider font-semibold hover:bg-cream-muted flex-shrink-0" onclick="filterCategory('color', this)" data-i18n="menu.tab_color">Balayage & Color</button>
+              <button class="service-filter-btn px-4 py-2 rounded-full bg-cream-surface text-on-surface-variant text-xs uppercase tracking-wider font-semibold hover:bg-cream-muted flex-shrink-0" onclick="filterCategory('sculpt', this)" data-i18n="menu.tab_styling">Sculpt & Cut</button>
+              <button class="service-filter-btn px-4 py-2 rounded-full bg-cream-surface text-on-surface-variant text-xs uppercase tracking-wider font-semibold hover:bg-cream-muted flex-shrink-0" onclick="filterCategory('ritual', this)" data-i18n="menu.tab_care">Scalp Rituals</button>
+            </div>
+
+            <!-- Service Items List -->
+            <div class="flex flex-col space-y-4" id="services-list">
+              
+              <!-- Service 1 -->
+              <label class="service-item relative flex items-center p-5 rounded-2xl bg-cream-surface cursor-pointer shadow-sm hover:shadow-md transition-all duration-200 border border-border-warm" data-cat="color">
+                <input checked="" class="peer sr-only" data-duration="150 min" data-price="295" name="service" onchange="updateServiceSelection(this)" type="radio" value="Golden Sun Balayage & Glaze"/>
+                <div class="w-20 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container-high relative">
+                  <img class="w-full h-full object-cover" data-alt="Golden balayage locks" src="assets/images/service_balayage.jpg"/>
+                </div>
+                <div class="ml-5 flex-1 min-w-0 pr-4">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-[10px] uppercase text-gold-antique tracking-[0.2em] font-semibold">Signature Atelier</span>
+                    <span class="font-serif text-xl font-bold text-espresso-dark">CHF 295</span>
+                  </div>
+                  <h3 class="font-serif text-lg text-espresso-dark truncate font-medium" data-i18n="service2.title">Golden Sun Balayage & Glaze</h3>
+                  <p class="text-xs text-on-surface-variant line-clamp-2 mt-1 leading-relaxed" data-i18n="service2.desc">
+                    Hand-painted French balayage, silk gloss tonic, and signature crown blowout with molecular bond seal.
+                  </p>
+                  <div class="flex items-center gap-1.5 mt-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-[15px] text-gold-antique">schedule</span>
+                    <span class="text-xs uppercase tracking-wider font-medium">150 mins</span>
+                  </div>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center peer-checked:bg-espresso-dark peer-checked:text-gold-shimmer text-transparent transition-colors">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                </div>
+              </label>
+
+              <!-- Service 2 -->
+              <label class="service-item relative flex items-center p-5 rounded-2xl bg-cream-surface cursor-pointer shadow-sm hover:shadow-md transition-all duration-200 border border-border-warm" data-cat="sculpt">
+                <input class="peer sr-only" data-duration="75 min" data-price="185" name="service" onchange="updateServiceSelection(this)" type="radio" value="Editorial Precision Cut & Gloss"/>
+                <div class="w-20 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container-high relative">
+                  <img class="w-full h-full object-cover" data-alt="Razor sharp bob haircut" src="assets/images/service_precision_sculpt.jpg"/>
+                </div>
+                <div class="ml-5 flex-1 min-w-0 pr-4">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-[10px] uppercase text-on-surface-variant tracking-[0.2em] font-semibold">Architectural</span>
+                    <span class="font-serif text-xl font-bold text-espresso-dark">CHF 185</span>
+                  </div>
+                  <h3 class="font-serif text-lg text-espresso-dark truncate font-medium" data-i18n="service.precision.title">Editorial Precision Cut & Gloss</h3>
+                  <p class="text-xs text-on-surface-variant line-clamp-2 mt-1 leading-relaxed" data-i18n="service.precision.desc">
+                    Bespoke face-framing architectural sculpting paired with caviar oil finish and thermal diamond shine.
+                  </p>
+                  <div class="flex items-center gap-1.5 mt-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-[15px] text-gold-antique">schedule</span>
+                    <span class="text-xs uppercase tracking-wider font-medium">75 mins</span>
+                  </div>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center peer-checked:bg-espresso-dark peer-checked:text-gold-shimmer text-transparent transition-colors">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                </div>
+              </label>
+
+              <!-- Service 3 -->
+              <label class="service-item relative flex items-center p-5 rounded-2xl bg-cream-surface cursor-pointer shadow-sm hover:shadow-md transition-all duration-200 border border-border-warm" data-cat="ritual">
+                <input class="peer sr-only" data-duration="90 min" data-price="225" name="service" onchange="updateServiceSelection(this)" type="radio" value="Cleopatra 24k Royal Scalp Spa"/>
+                <div class="w-20 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container-high relative">
+                  <img class="w-full h-full object-cover" data-alt="Head spa aesthetic treatment" src="assets/images/service_scalp_spa.jpg"/>
+                </div>
+                <div class="ml-5 flex-1 min-w-0 pr-4">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="text-[10px] uppercase text-gold-antique tracking-[0.2em] font-semibold">Holistic Ritual</span>
+                    <span class="font-serif text-xl font-bold text-espresso-dark">CHF 225</span>
+                  </div>
+                  <h3 class="font-serif text-lg text-espresso-dark truncate font-medium" data-i18n="service3.title">Cleopatra 24k Royal Scalp Spa</h3>
+                  <p class="text-xs text-on-surface-variant line-clamp-2 mt-1 leading-relaxed" data-i18n="service3.desc">
+                    Japanese Shiatsu pressure point massage, amber steam, and 24k gold leaf botanical elixir infusion.
+                  </p>
+                  <div class="flex items-center gap-1.5 mt-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-[15px] text-gold-antique">schedule</span>
+                    <span class="text-xs uppercase tracking-wider font-medium">90 mins</span>
+                  </div>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center peer-checked:bg-espresso-dark peer-checked:text-gold-shimmer text-transparent transition-colors">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                </div>
+              </label>
+
+            </div>
+
+            <!-- Add-on Toggles -->
+            <div class="pt-4 border-t border-border-warm">
+              <span class="text-xs uppercase tracking-[0.2em] text-espresso-dark font-semibold block mb-3" data-i18n="res.enhance_title">Enhance Your Appointment</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <label class="flex items-center p-4 rounded-xl bg-cream-surface cursor-pointer border border-border-warm hover:bg-cream-muted transition-colors">
+                  <input class="rounded text-gold-antique focus:ring-0 mr-3 h-5 w-5" id="addon-bond" onchange="toggleAddon(this, 'Bond Repair Restorative Mask', 35)" type="checkbox" value="35"/>
+                  <div class="min-w-0">
+                    <span class="text-sm font-semibold text-espresso-dark block" data-i18n="res.addon_bond">Bond Shield Restorative Mask</span>
+                    <span class="text-xs text-gold-antique font-medium">+CHF 35 (15 min)</span>
+                  </div>
+                </label>
+                <label class="flex items-center p-4 rounded-xl bg-cream-surface cursor-pointer border border-border-warm hover:bg-cream-muted transition-colors">
+                  <input class="rounded text-gold-antique focus:ring-0 mr-3 h-5 w-5" id="addon-gloss" onchange="toggleAddon(this, 'Crystal Clear High-Gloss', 45)" type="checkbox" value="45"/>
+                  <div class="min-w-0">
+                    <span class="text-sm font-semibold text-espresso-dark block" data-i18n="res.addon_gloss">Crystal Gloss Tint & Shine</span>
+                    <span class="text-xs text-gold-antique font-medium">+CHF 45 (20 min)</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 2: Choose Master Stylist -->
+          <section class="hidden flex-col space-y-6" id="step-2-container">
+            <div class="bg-cream-surface p-5 rounded-2xl flex items-center gap-4 border border-border-warm">
+              <span class="material-symbols-outlined text-gold-antique text-[32px]">verified</span>
+              <p class="text-sm text-on-surface-variant leading-relaxed" data-i18n="res.stylist_guarantee">
+                Each Master Artist completes 300+ hours of seasonal Haute Couture technique development in Milan & Paris.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+              <!-- Stylist Option: First Available -->
+              <label class="stylist-card flex items-center p-5 rounded-2xl bg-cream-surface cursor-pointer shadow-sm hover:shadow-md transition-all border border-border-warm">
+                <input checked="" class="peer sr-only" data-role="Immediate Concierge Match" name="stylist" onchange="updateStylistSelection(this)" type="radio" value="First Available Master"/>
+                <div class="w-16 h-16 rounded-full bg-gold-shimmer/30 flex items-center justify-center text-espresso-dark flex-shrink-0">
+                  <span class="material-symbols-outlined text-[28px]">stars</span>
+                </div>
+                <div class="ml-5 flex-1 min-w-0">
+                  <h4 class="font-serif text-lg font-semibold text-espresso-dark" data-i18n="res.first_avail">First Available Master</h4>
+                  <p class="text-xs text-on-surface-variant mt-0.5" data-i18n="res.first_avail_sub">Seamless concierge allocation for your preferred timing</p>
+                  <span class="text-[10px] uppercase text-gold-antique tracking-widest font-semibold mt-1 block" data-i18n="res.flexibility">Maximum Flexibility</span>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center peer-checked:bg-espresso-dark peer-checked:text-gold-shimmer text-transparent">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                </div>
+              </label>
+
+              <!-- Stylist 1: Laurent Saint-Germain -->
+              <label class="stylist-card flex items-center p-5 rounded-2xl bg-cream-surface cursor-pointer shadow-sm hover:shadow-md transition-all border border-border-warm">
+                <input class="peer sr-only" data-role="Artistic Director & Master Sculptor" name="stylist" onchange="updateStylistSelection(this)" type="radio" value="Laurent Saint-Germain"/>
+                <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-gold-antique/30">
+                  <img class="w-full h-full object-cover" data-alt="Laurent Saint-Germain" src="assets/images/stylist_laurent_square.jpg"/>
+                </div>
+                <div class="ml-5 flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h4 class="font-serif text-lg font-semibold text-espresso-dark">Laurent Saint-Germain</h4>
+                    <span class="material-symbols-outlined text-gold-antique text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-0.5" data-i18n="res.laurent_role">Artistic Director & Master Sculptor</p>
+                  <span class="text-[10px] uppercase text-gold-antique tracking-widest font-semibold mt-1 block" data-i18n="res.laurent_exp">14 Yrs Swiss & Paris Couture Experience</span>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center peer-checked:bg-espresso-dark peer-checked:text-gold-shimmer text-transparent">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                </div>
+              </label>
+
+              <!-- Stylist 2: Marcello Cruz -->
+              <label class="stylist-card flex items-center p-5 rounded-2xl bg-cream-surface cursor-pointer shadow-sm hover:shadow-md transition-all border border-border-warm">
+                <input class="peer sr-only" data-role="Lead Hair Sculptor & Dry-Cutting Specialist" name="stylist" onchange="updateStylistSelection(this)" type="radio" value="Marcello Cruz"/>
+                <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-gold-antique/30">
+                  <img class="w-full h-full object-cover" data-alt="Marcello Cruz" src="assets/images/stylist_marcello_square.jpg"/>
+                </div>
+                <div class="ml-5 flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h4 class="font-serif text-lg font-semibold text-espresso-dark">Marcello Cruz</h4>
+                    <span class="material-symbols-outlined text-gold-antique text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-0.5" data-i18n="res.marcello_role">Lead Hair Sculptor & Precision Dry-Cutting</p>
+                  <span class="text-[10px] uppercase text-gold-antique tracking-widest font-semibold mt-1 block" data-i18n="res.marcello_exp">Milano Fashion Week & Architectural Cuts</span>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center peer-checked:bg-espresso-dark peer-checked:text-gold-shimmer text-transparent">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                </div>
+              </label>
+
+              <!-- Stylist 3: Antoine Moreau -->
+              <label class="stylist-card flex items-center p-5 rounded-2xl bg-cream-surface cursor-pointer shadow-sm hover:shadow-md transition-all border border-border-warm">
+                <input class="peer sr-only" data-role="Creative Color Director" name="stylist" onchange="updateStylistSelection(this)" type="radio" value="Antoine Moreau"/>
+                <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-gold-antique/30">
+                  <img class="w-full h-full object-cover" data-alt="Antoine Moreau" src="assets/images/stylist_antoine_square.jpg"/>
+                </div>
+                <div class="ml-5 flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h4 class="font-serif text-lg font-semibold text-espresso-dark">Antoine Moreau</h4>
+                    <span class="material-symbols-outlined text-gold-antique text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-0.5" data-i18n="res.antoine_role">Creative Color Director & Gloss Specialist</p>
+                  <span class="text-[10px] uppercase text-gold-antique tracking-widest font-semibold mt-1 block" data-i18n="res.antoine_exp">Zürich Atelier Director · Molten Balayage</span>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center peer-checked:bg-espresso-dark peer-checked:text-gold-shimmer text-transparent">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                </div>
+              </label>
+
+              <!-- Stylist 4: Hélène Laurent -->
+              <label class="stylist-card flex items-center p-5 rounded-2xl bg-cream-surface cursor-pointer shadow-sm hover:shadow-md transition-all border border-border-warm">
+                <input class="peer sr-only" data-role="Master Colorist & Balayage Specialist" name="stylist" onchange="updateStylistSelection(this)" type="radio" value="Hélène Laurent"/>
+                <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-gold-antique/30">
+                  <img class="w-full h-full object-cover" data-alt="Hélène Laurent" src="assets/images/stylist_helene.jpg"/>
+                </div>
+                <div class="ml-5 flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h4 class="font-serif text-lg font-semibold text-espresso-dark">Hélène Laurent</h4>
+                    <span class="material-symbols-outlined text-gold-antique text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-0.5" data-i18n="res.helene_role">Master Colorist & Balayage Specialist</p>
+                  <span class="text-[10px] uppercase text-gold-antique tracking-widest font-semibold mt-1 block" data-i18n="res.helene_exp">Vogue Switzerland & Paris Alum</span>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center peer-checked:bg-espresso-dark peer-checked:text-gold-shimmer text-transparent">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                </div>
+              </label>
+
+              <!-- Stylist 5: Soraya Ben Amor -->
+              <label class="stylist-card flex items-center p-5 rounded-2xl bg-cream-surface cursor-pointer shadow-sm hover:shadow-md transition-all border border-border-warm">
+                <input class="peer sr-only" data-role="Premier Balayage & Tonal Alchemist" name="stylist" onchange="updateStylistSelection(this)" type="radio" value="Soraya Ben Amor"/>
+                <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 border-gold-antique/30">
+                  <img class="w-full h-full object-cover" data-alt="Soraya Ben Amor" src="assets/images/stylist_soraya.jpg"/>
+                </div>
+                <div class="ml-5 flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h4 class="font-serif text-lg font-semibold text-espresso-dark">Soraya Ben Amor</h4>
+                    <span class="material-symbols-outlined text-gold-antique text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-0.5" data-i18n="res.soraya_role">Premier Balayage & Tonal Alchemist</p>
+                  <span class="text-[10px] uppercase text-gold-antique tracking-widest font-semibold mt-1 block" data-i18n="res.soraya_exp">Vogue Switzerland & Italia Contributor</span>
+                </div>
+                <div class="w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center peer-checked:bg-espresso-dark peer-checked:text-gold-shimmer text-transparent">
+                  <span class="material-symbols-outlined text-[16px]">check</span>
+                </div>
+              </label>
+            </div>
+          </section>
+
+          <!-- STEP 3: Select Date & Time -->
+          <section class="hidden flex-col space-y-6" id="step-3-container">
+            <div class="bg-cream-surface px-6 py-4 rounded-2xl border border-border-warm flex items-center justify-between">
+              <span class="font-serif text-lg font-semibold text-espresso-dark" data-i18n="res.calendar_month">November 2024 Residency Calendar</span>
+              <div class="flex items-center gap-2">
+                <button aria-label="Previous Month" class="w-9 h-9 rounded-full bg-surface flex items-center justify-center text-espresso-dark shadow-sm hover:bg-gold-shimmer/30 transition-colors">
+                  <span class="material-symbols-outlined text-[18px]">chevron_left</span>
+                </button>
+                <button aria-label="Next Month" class="w-9 h-9 rounded-full bg-surface flex items-center justify-center text-espresso-dark shadow-sm hover:bg-gold-shimmer/30 transition-colors">
+                  <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Date Buttons Grid -->
+            <div>
+              <span class="text-xs uppercase tracking-[0.2em] text-on-surface-variant font-semibold block mb-3" data-i18n="res.select_date">Select Date</span>
+              <div class="grid grid-cols-5 gap-3">
+                <button class="cal-day-btn flex flex-col items-center justify-center py-4 rounded-xl bg-cream-surface text-on-surface-variant hover:bg-cream-muted transition-all border border-border-warm" onclick="selectCalendarDate(this, 'Thu, Nov 14')" type="button">
+                  <span class="text-xs uppercase">Thu</span>
+                  <span class="font-serif text-xl font-bold text-espresso-dark mt-1">14</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold-antique mt-1"></span>
+                </button>
+                <button class="cal-day-btn flex flex-col items-center justify-center py-4 rounded-xl bg-espresso-dark text-surface shadow-md ring-2 ring-gold-antique/50" onclick="selectCalendarDate(this, 'Fri, Nov 15')" type="button">
+                  <span class="text-xs uppercase text-gold-shimmer">Fri</span>
+                  <span class="font-serif text-xl font-bold text-surface mt-1">15</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold-shimmer mt-1"></span>
+                </button>
+                <button class="cal-day-btn flex flex-col items-center justify-center py-4 rounded-xl bg-cream-surface text-on-surface-variant hover:bg-cream-muted transition-all border border-border-warm" onclick="selectCalendarDate(this, 'Sat, Nov 16')" type="button">
+                  <span class="text-xs uppercase">Sat</span>
+                  <span class="font-serif text-xl font-bold text-espresso-dark mt-1">16</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold-antique mt-1"></span>
+                </button>
+                <button class="cal-day-btn flex flex-col items-center justify-center py-4 rounded-xl bg-cream-surface text-on-surface-variant hover:bg-cream-muted transition-all border border-border-warm" onclick="selectCalendarDate(this, 'Sun, Nov 17')" type="button">
+                  <span class="text-xs uppercase">Sun</span>
+                  <span class="font-serif text-xl font-bold text-espresso-dark mt-1">17</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold-antique mt-1"></span>
+                </button>
+                <button class="cal-day-btn flex flex-col items-center justify-center py-4 rounded-xl bg-cream-surface text-on-surface-variant hover:bg-cream-muted transition-all border border-border-warm" onclick="selectCalendarDate(this, 'Tue, Nov 19')" type="button">
+                  <span class="text-xs uppercase">Tue</span>
+                  <span class="font-serif text-xl font-bold text-espresso-dark mt-1">19</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-gold-antique mt-1"></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Time Slots -->
+            <div class="space-y-4">
+              <div>
+                <span class="text-xs uppercase tracking-wider text-espresso-dark font-semibold flex items-center gap-1.5 mb-2.5">
+                  <span class="material-symbols-outlined text-[18px] text-gold-antique">wb_twilight</span> <span data-i18n="res.morning">Morning Salon</span> (10:00 - 12:00)
+                </span>
+                <div class="grid grid-cols-3 gap-3">
+                  <button class="time-slot-btn py-3 rounded-xl bg-cream-surface font-serif text-base text-espresso-dark border border-border-warm hover:bg-cream-muted" onclick="selectTimeSlot(this, '10:00 AM')" type="button">10:00 AM</button>
+                  <button class="time-slot-btn py-3 rounded-xl bg-espresso-dark font-serif text-base text-gold-shimmer shadow-md" onclick="selectTimeSlot(this, '11:15 AM')" type="button">11:15 AM</button>
+                  <button class="py-3 rounded-xl bg-surface-container-highest/60 font-serif text-base text-editorial-muted cursor-not-allowed line-through" disabled="" type="button">11:45 AM</button>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-xs uppercase tracking-wider text-espresso-dark font-semibold flex items-center gap-1.5 mb-2.5">
+                  <span class="material-symbols-outlined text-[18px] text-gold-antique">light_mode</span> <span data-i18n="res.afternoon">Afternoon Atelier</span> (13:00 - 16:30)
+                </span>
+                <div class="grid grid-cols-3 gap-3">
+                  <button class="time-slot-btn py-3 rounded-xl bg-cream-surface font-serif text-base text-espresso-dark border border-border-warm hover:bg-cream-muted" onclick="selectTimeSlot(this, '01:30 PM')" type="button">01:30 PM</button>
+                  <button class="time-slot-btn py-3 rounded-xl bg-cream-surface font-serif text-base text-espresso-dark border border-border-warm hover:bg-cream-muted" onclick="selectTimeSlot(this, '03:00 PM')" type="button">03:00 PM</button>
+                  <button class="time-slot-btn py-3 rounded-xl bg-cream-surface font-serif text-base text-espresso-dark border border-border-warm hover:bg-cream-muted" onclick="selectTimeSlot(this, '04:15 PM')" type="button">04:15 PM</button>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-xs uppercase tracking-wider text-espresso-dark font-semibold flex items-center gap-1.5 mb-2.5">
+                  <span class="material-symbols-outlined text-[18px] text-gold-antique">dark_mode</span> <span data-i18n="res.evening">Evening Soirée</span> (17:30 - 20:00)
+                </span>
+                <div class="grid grid-cols-3 gap-3">
+                  <button class="time-slot-btn py-3 rounded-xl bg-cream-surface font-serif text-base text-espresso-dark border border-border-warm hover:bg-cream-muted" onclick="selectTimeSlot(this, '05:30 PM')" type="button">05:30 PM</button>
+                  <button class="time-slot-btn py-3 rounded-xl bg-cream-surface font-serif text-base text-espresso-dark border border-border-warm hover:bg-cream-muted" onclick="selectTimeSlot(this, '06:45 PM')" type="button">06:45 PM</button>
+                  <button class="py-3 rounded-xl bg-surface-container-highest/60 font-serif text-base text-editorial-muted cursor-not-allowed line-through" disabled="" type="button">07:30 PM</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 4: Custom Royal Amenities -->
+          <section class="hidden flex-col space-y-6" id="step-4-container">
+            <div>
+              <span class="text-xs uppercase tracking-[0.2em] text-espresso-dark font-semibold block mb-3" data-i18n="res.hospitality_title">Salon Hospitality Service</span>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <label class="flex flex-col items-center p-4 rounded-2xl bg-cream-surface cursor-pointer text-center hover:bg-cream-muted border border-border-warm">
+                  <input checked="" class="peer sr-only" name="beverage" type="radio" value="Laurent-Perrier Champagne"/>
+                  <span class="material-symbols-outlined text-[28px] text-gold-antique mb-2">wine_bar</span>
+                  <span class="text-sm font-semibold text-espresso-dark" data-i18n="res.champagne">Champagne Brut</span>
+                  <span class="text-xs text-on-surface-variant" data-i18n="res.champagne_sub">Swiss Grand Cru Brut</span>
+                </label>
+                <label class="flex flex-col items-center p-4 rounded-2xl bg-cream-surface cursor-pointer text-center hover:bg-cream-muted border border-border-warm">
+                  <input class="peer sr-only" name="beverage" type="radio" value="Artisanal Espresso"/>
+                  <span class="material-symbols-outlined text-[28px] text-gold-antique mb-2">coffee</span>
+                  <span class="text-sm font-semibold text-espresso-dark" data-i18n="res.coffee">Artisanal Espresso</span>
+                  <span class="text-xs text-on-surface-variant" data-i18n="res.coffee_sub">Roman Roast</span>
+                </label>
+                <label class="flex flex-col items-center p-4 rounded-2xl bg-cream-surface cursor-pointer text-center hover:bg-cream-muted border border-border-warm">
+                  <input class="peer sr-only" name="beverage" type="radio" value="Egyptian Chamomile Infusion"/>
+                  <span class="material-symbols-outlined text-[28px] text-gold-antique mb-2">local_cafe</span>
+                  <span class="text-sm font-semibold text-espresso-dark" data-i18n="res.tea">Herbal Tisane</span>
+                  <span class="text-xs text-on-surface-variant" data-i18n="res.tea_sub">Egyptian Chamomile</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <span class="text-xs uppercase tracking-[0.2em] text-espresso-dark font-semibold block mb-3" data-i18n="res.sensitivities_title">Session Atmosphere</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <label class="flex items-center p-4 rounded-2xl bg-cream-surface cursor-pointer border border-border-warm hover:bg-cream-muted">
+                  <input checked="" class="text-gold-antique focus:ring-0 mr-3 h-5 w-5" name="atmosphere" type="radio" value="Silent Sanctuary"/>
+                  <div>
+                    <span class="text-sm font-semibold text-espresso-dark block" data-i18n="res.silent">Silent Sanctuary</span>
+                    <span class="text-xs text-on-surface-variant" data-i18n="res.silent_sub">Quiet contemplation & relaxation</span>
+                  </div>
+                </label>
+                <label class="flex items-center p-4 rounded-2xl bg-cream-surface cursor-pointer border border-border-warm hover:bg-cream-muted">
+                  <input class="text-gold-antique focus:ring-0 mr-3 h-5 w-5" name="atmosphere" type="radio" value="Stylist Consultation & Chat"/>
+                  <div>
+                    <span class="text-sm font-semibold text-espresso-dark block" data-i18n="res.atmosphere_dialogue">Engaged Dialogue</span>
+                    <span class="text-xs text-on-surface-variant" data-i18n="res.atmosphere_dialogue_sub">Deep consultation & styling guidance</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs uppercase tracking-[0.2em] text-espresso-dark font-semibold block mb-2" for="custom-notes" data-i18n="res.notes_label">
+                Scalp Sensitivities or Editorial Requests
+              </label>
+              <textarea class="w-full bg-cream-surface rounded-2xl p-4 text-espresso-dark text-sm border border-border-warm focus:outline-none focus:ring-2 focus:ring-gold-antique placeholder-editorial-muted" id="custom-notes" placeholder="e.g. Sensitive to high heat, preference for ammonia-free formulations, preparing for wedding..." rows="3" data-i18n-placeholder="res.notes_placeholder"></textarea>
+            </div>
+          </section>
+
+          <!-- Step Navigation Action Buttons -->
+          <div class="flex items-center gap-4 pt-4">
+            <button aria-label="Previous Step" class="hidden h-14 px-6 rounded-xl bg-cream-surface text-espresso-dark font-semibold text-xs uppercase tracking-wider hover:bg-cream-muted transition-colors flex items-center gap-2 border border-border-warm" id="prev-step-btn" onclick="navigateStep(-1)" type="button">
+              <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+              <span data-i18n="res.btn_back">Previous</span>
+            </button>
+            <button class="flex-1 h-14 px-8 rounded-xl bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer font-semibold text-xs uppercase tracking-[0.16em] flex items-center justify-center gap-2 transition-all shadow-md" id="next-step-btn" onclick="navigateStep(1)" type="button">
+              <span id="action-btn-text">Proceed to Master Stylist</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sticky Summary Itinerary Card (lg:col-span-4) -->
+        <div class="lg:col-span-4 lg:sticky lg:top-28">
+          <div class="bg-cream-surface rounded-2xl p-6 sm:p-8 border border-border-warm shadow-xl space-y-6">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-border-warm">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-gold-antique text-[22px]">receipt_long</span>
+                <span class="font-serif text-lg font-semibold text-espresso-dark" data-i18n="res.summary_title">Royal Itinerary</span>
+              </div>
+              <span class="text-[10px] uppercase font-semibold text-gold-antique bg-surface px-2.5 py-1 rounded-full border border-border-warm">
+                Verified
+              </span>
+            </div>
+
+            <div class="space-y-4">
+              <!-- Selected Service -->
+              <div class="flex justify-between items-start">
+                <div class="min-w-0 pr-3">
+                  <span class="text-xs text-editorial-muted uppercase tracking-wider font-semibold block" data-i18n="res.summary_service_lbl">Treatment</span>
+                  <span class="font-serif text-base font-medium text-espresso-dark truncate block mt-0.5" id="summary-service-name" data-i18n="service2.title">Golden Sun Balayage & Glaze</span>
+                </div>
+                <span class="font-serif text-lg font-bold text-espresso-dark flex-shrink-0" id="summary-service-price">CHF 295</span>
+              </div>
+
+              <!-- Addon Row -->
+              <div class="hidden justify-between items-start text-on-surface-variant pt-2 border-t border-border-warm/60" id="summary-addon-row">
+                <div class="min-w-0 pr-3">
+                  <span class="text-xs text-editorial-muted uppercase tracking-wider font-semibold block" data-i18n="res.enhance_title">Enhancement</span>
+                  <span class="text-xs text-espresso-dark font-medium block mt-0.5" id="summary-addon-name">None</span>
+                </div>
+                <span class="text-xs font-bold text-espresso-dark flex-shrink-0" id="summary-addon-price">+CHF 0</span>
+              </div>
+
+              <!-- Stylist & Time Pill -->
+              <div class="bg-surface p-4 rounded-xl border border-border-warm space-y-2">
+                <div>
+                  <span class="text-[10px] text-editorial-muted uppercase tracking-wider block font-semibold" data-i18n="res.summary_stylist_lbl">Master Stylist</span>
+                  <span class="font-serif text-sm font-semibold text-espresso-dark truncate block" id="summary-stylist" data-i18n="res.first_avail">First Available Master</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-editorial-muted uppercase tracking-wider block font-semibold" data-i18n="res.summary_datetime_lbl">Scheduled Window</span>
+                  <span class="text-xs text-espresso-dark font-bold block" id="summary-datetime">Fri, Nov 15 • 11:15 AM</span>
+                </div>
+              </div>
+
+              <!-- Total & Deposit -->
+              <div class="pt-4 border-t border-border-warm flex justify-between items-end">
+                <div>
+                  <span class="text-xs uppercase tracking-wider text-editorial-muted block font-semibold" data-i18n="res.summary_total">Estimated Total</span>
+                  <span class="text-xs text-gold-antique font-semibold"><span data-i18n="res.summary_deposit">30% Deposit:</span> <span id="summary-deposit">CHF 89</span></span>
+                </div>
+                <span class="font-serif text-3xl font-bold text-espresso-dark" id="summary-total">CHF 295</span>
+              </div>
+            </div>
+
+            <!-- Footnote -->
+            <div class="p-3.5 rounded-xl bg-surface/70 border border-border-warm/50 flex items-start gap-2.5 text-editorial-muted">
+              <span class="material-symbols-outlined text-[18px] text-gold-antique flex-shrink-0 mt-0.5">verified_user</span>
+              <p class="text-[11px] leading-relaxed" data-i18n="res.summary_deposit_note">
+                Complimentary reschedule or cancellation up to 24h prior. VIP concierge available 7 days a week.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Booking Confirmation Modal Popup -->
+    <div class="hidden fixed inset-0 z-50 bg-espresso-dark/75 backdrop-blur-md flex items-center justify-center p-4" id="confirmation-modal">
+      <div class="w-full max-w-lg bg-surface rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col items-center text-center space-y-6 border border-border-warm animate-in fade-in zoom-in-95">
+        <div class="w-20 h-20 rounded-full bg-gold-shimmer/30 flex items-center justify-center text-gold-antique shadow-lg border border-gold-antique/40">
+          <span class="material-symbols-outlined text-[42px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+        </div>
+        
+        <div class="space-y-2">
+          <span class="text-xs uppercase tracking-[0.25em] text-gold-antique font-semibold" data-i18n="confirm.title">Reservation Confirmed</span>
+          <h3 class="font-serif text-3xl font-normal text-espresso-dark" data-i18n="confirm.subtitle">Welcome to Royal Care</h3>
+          <p class="text-sm text-on-surface-variant max-w-sm mx-auto leading-relaxed" data-i18n="confirm.concierge_note">
+            Your atelier reservation has been officially registered with Cleopatra Coiffeur. Calendar invitations and pre-service preparation guides have been dispatched.
+          </p>
+        </div>
+
+        <div class="w-full bg-cream-surface p-5 rounded-2xl text-left space-y-2 border border-border-warm">
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-editorial-muted uppercase font-semibold" data-i18n="res.booking_ref">Booking Reference:</span>
+            <span class="font-serif font-bold text-sm tracking-wider text-espresso-dark">#CC-8942-LUX</span>
+          </div>
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-editorial-muted uppercase font-semibold" data-i18n="res.summary_service_lbl">Treatment:</span>
+            <span class="font-semibold text-espresso-dark" id="modal-service">Golden Sun Balayage</span>
+          </div>
+          <div class="flex justify-between items-center text-xs">
+            <span class="text-editorial-muted uppercase font-semibold" data-i18n="res.summary_datetime_lbl">Appointment:</span>
+            <span class="font-semibold text-gold-antique" id="modal-datetime">Fri, Nov 15 • 11:15 AM</span>
+          </div>
+        </div>
+
+        <div class="w-full flex flex-col space-y-3 pt-2">
+          <button class="w-full py-4 rounded-xl bg-espresso-dark text-gold-shimmer text-xs uppercase tracking-widest font-semibold hover:bg-charcoal-soft transition-colors shadow-md" onclick="window.location.href='service-menu.html'" type="button" data-i18n="confirm.view_menu">
+            Explore Service Menu
+          </button>
+          <button class="w-full py-2.5 text-espresso-dark text-xs uppercase tracking-widest font-semibold hover:text-gold-antique transition-colors" onclick="window.location.href='index.html'" type="button" data-i18n="confirm.return_home">
+            Return to Atelier Home
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Luxury Desktop & Mobile Footer -->
+  <footer class="bg-espresso-dark text-surface pt-16 pb-28 md:pb-16 border-t border-charcoal-soft">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <img alt="Cleopatra Logo" class="h-8 w-auto brightness-200" src="assets/images/logo.jpg"/>
+            <span class="font-serif text-xl text-gold-shimmer tracking-tight">CLEOPATRA</span>
+          </div>
+          <p class="text-xs text-cream-muted/70 leading-relaxed" data-i18n="footer.desc">
+            Haute coiffure atelier established in Switzerland. Architectural sculpting, bespoke tonal alchemy, and ancient organic botanical hair elixirs.
+          </p>
+          <div class="flex items-center gap-3 pt-2 text-gold-shimmer">
+            <span class="text-[10px] uppercase tracking-widest text-gold-antique font-semibold" data-i18n="footer.residencies_label">Residencies:</span>
+            <span class="text-[11px] text-cream-muted" data-i18n="footer.residencies_val">Zürich · Genève · St. Moritz</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-widest text-gold-antique mb-4 font-semibold" data-i18n="footer.exp_title">Atelier Experience</h4>
+          <ul class="space-y-2.5 text-xs text-cream-muted/80">
+            <li><a href="index.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.home">Atelier Home</a></li>
+            <li><a href="service-menu.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.services">Couture Service Menu</a></li>
+            <li><a href="couture-lookbook.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.lookbook">Saison 2025 Lookbook</a></li>
+            <li><a href="bespoke-reservation.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.booking">Private Chair Reservation</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-widest text-gold-antique mb-4 font-semibold" data-i18n="footer.res_title">Private Residencies</h4>
+          <div class="space-y-3 text-xs text-cream-muted/80">
+            <div>
+              <p class="text-surface font-semibold" data-i18n="footer.zh_title">Zürich Flagship Atelier</p>
+              <p class="text-cream-muted/60" data-i18n="footer.zh_addr">Bahnhofstrasse 28, 8001 Zürich</p>
+              <p class="text-gold-shimmer text-[11px]" data-i18n="footer.zh_hours">Tue – Sat: 9:00 – 19:30</p>
+            </div>
+            <div>
+              <p class="text-surface font-semibold" data-i18n="footer.ge_title">Genève Sanctuary</p>
+              <p class="text-cream-muted/60" data-i18n="footer.ge_addr">Rue du Rhône 42, 1204 Genève</p>
+              <p class="text-gold-shimmer text-[11px]" data-i18n="footer.ge_hours">Mon – Sun: 10:00 – 20:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-charcoal-soft/80 flex flex-col md:flex-row items-center justify-between gap-4 text-cream-muted/50 text-[11px]">
+        <p data-i18n="footer.rights">© 2025 Cleopatra Coiffeur Haute Atelier Suisse S.A. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-gold-shimmer transition-colors" data-i18n="footer.privacy">Confidentiality</a>
+          <a href="#" class="hover:text-gold-shimmer transition-colors" data-i18n="footer.terms">Terms of Haute Service</a>
+          <a href="#" class="hover:text-gold-shimmer transition-colors" data-i18n="footer.concierge">Concierge Protocol</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Tab Bar (Visible ONLY on Mobile < 768px) -->
+  <nav class="md:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-border-warm shadow-[0_-2px_12px_rgba(26,23,21,0.06)]">
+    <div class="flex justify-around items-center h-18 px-2">
+      <a href="index.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-editorial-muted hover:text-espresso-dark transition-colors">
+        <span class="material-symbols-outlined text-[20px]">spa</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.atelier">Atelier</span>
+      </a>
+      <a href="service-menu.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-editorial-muted hover:text-espresso-dark transition-colors">
+        <span class="material-symbols-outlined text-[20px]">content_cut</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.services">Services</span>
+      </a>
+      <a href="couture-lookbook.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-editorial-muted hover:text-espresso-dark transition-colors">
+        <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.lookbook">Lookbook</span>
+      </a>
+      <a href="bespoke-reservation.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-espresso-dark font-bold relative after:content-[''] after:absolute after:bottom-1 after:w-1.5 after:h-1.5 after:bg-gold-antique after:rounded-full">
+        <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.book">Book</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Wizard Script -->
+  <script>
+    let currentStep = 1;
+    const totalSteps = 4;
+
+    let bookingState = {
+      serviceName: 'Golden Sun Balayage & Glaze',
+      servicePrice: 295,
+      serviceDuration: '150 min',
+      addonName: '',
+      addonPrice: 0,
+      stylist: 'First Available Master',
+      date: 'Fri, Nov 15',
+      time: '11:15 AM',
+      beverage: 'Laurent-Perrier Champagne'
+    };
+
+    function getStepMeta(step) {
+      const meta = {
+        1: {
+          title: typeof t === 'function' ? t("res.step1_title") : "Select Bespoke Treatment",
+          desc: typeof t === 'function' ? t("res.step1_desc") : "Immerse in tailor-crafted hair couture formulated exclusively with botanical elixirs.",
+          btnText: typeof t === 'function' ? t("res.btn_next1") : "Proceed to Master Stylist"
+        },
+        2: {
+          title: typeof t === 'function' ? t("res.step2_title") : "Choose Master Stylist",
+          desc: typeof t === 'function' ? t("res.step2_desc") : "Select an elite artisan dedicated to realizing your editorial hair vision.",
+          btnText: typeof t === 'function' ? t("res.btn_next2") : "Select Date & Time"
+        },
+        3: {
+          title: typeof t === 'function' ? t("res.step3_title") : "Select Date & Time",
+          desc: typeof t === 'function' ? t("res.step3_desc") : "Pick an opportune session hour within our serene boutique sanctuary.",
+          btnText: typeof t === 'function' ? t("res.btn_next3") : "Customize Experience"
+        },
+        4: {
+          title: typeof t === 'function' ? t("res.step4_title") : "Royal Amenities & Sensitivities",
+          desc: typeof t === 'function' ? t("res.step4_desc") : "Personalize your arrival hospitality, ambient atmosphere, and care notes.",
+          btnText: typeof t === 'function' ? t("res.btn_confirm") : "Confirm Royal Reservation"
+        }
+      };
+      return meta[step] || meta[1];
+    }
+
+    function renderStepMeta() {
+      const meta = getStepMeta(currentStep);
+      const titleEl = document.getElementById('step-title');
+      const descEl = document.getElementById('step-desc');
+      const btnTextEl = document.getElementById('action-btn-text');
+      if (titleEl && meta.title) titleEl.innerText = meta.title;
+      if (descEl && meta.desc) descEl.innerText = meta.desc;
+      if (btnTextEl && meta.btnText) btnTextEl.innerText = meta.btnText;
+    }
+
+    function updateServiceSelection(input) {
+      bookingState.serviceName = input.value;
+      bookingState.servicePrice = parseInt(input.getAttribute('data-price') || '0', 10);
+      bookingState.serviceDuration = input.getAttribute('data-duration') || '90 min';
+      recalculateSummary();
+    }
+
+    function toggleAddon(checkbox, name, price) {
+      if (checkbox.checked) {
+        bookingState.addonName = name;
+        bookingState.addonPrice = price;
+      } else {
+        bookingState.addonName = '';
+        bookingState.addonPrice = 0;
+      }
+      recalculateSummary();
+    }
+
+    function updateStylistSelection(input) {
+      bookingState.stylist = input.value;
+      document.getElementById('summary-stylist').innerText = bookingState.stylist;
+    }
+
+    function selectCalendarDate(btn, dateStr) {
+      document.querySelectorAll('.cal-day-btn').forEach(b => {
+        b.className = 'cal-day-btn flex flex-col items-center justify-center py-4 rounded-xl bg-cream-surface text-on-surface-variant hover:bg-cream-muted transition-all border border-border-warm';
+        const spans = b.querySelectorAll('span');
+        if (spans.length >= 3) {
+          spans[0].className = 'text-xs uppercase';
+          spans[1].className = 'font-serif text-xl font-bold text-espresso-dark mt-1';
+          spans[2].className = 'w-1.5 h-1.5 rounded-full bg-gold-antique mt-1';
+        }
+      });
+
+      btn.className = 'cal-day-btn flex flex-col items-center justify-center py-4 rounded-xl bg-espresso-dark text-surface shadow-md ring-2 ring-gold-antique/50';
+      const spans = btn.querySelectorAll('span');
+      if (spans.length >= 3) {
+        spans[0].className = 'text-xs uppercase text-gold-shimmer';
+        spans[1].className = 'font-serif text-xl font-bold text-surface mt-1';
+        spans[2].className = 'w-1.5 h-1.5 rounded-full bg-gold-shimmer mt-1';
+      }
+
+      bookingState.date = dateStr;
+      updateDateTimeSummary();
+    }
+
+    function selectTimeSlot(btn, timeStr) {
+      document.querySelectorAll('.time-slot-btn').forEach(b => {
+        b.className = 'time-slot-btn py-3 rounded-xl bg-cream-surface font-serif text-base text-espresso-dark border border-border-warm hover:bg-cream-muted';
+      });
+      btn.className = 'time-slot-btn py-3 rounded-xl bg-espresso-dark font-serif text-base text-gold-shimmer shadow-md';
+      bookingState.time = timeStr;
+      updateDateTimeSummary();
+    }
+
+    function updateDateTimeSummary() {
+      document.getElementById('summary-datetime').innerText = `${bookingState.date} • ${bookingState.time}`;
+    }
+
+    function recalculateSummary() {
+      const total = bookingState.servicePrice + bookingState.addonPrice;
+      const deposit = Math.round(total * 0.3);
+
+      document.getElementById('summary-service-name').innerText = bookingState.serviceName;
+      document.getElementById('summary-service-price').innerText = `CHF ${bookingState.servicePrice}`;
+
+      const addonRow = document.getElementById('summary-addon-row');
+      if (bookingState.addonPrice > 0) {
+        addonRow.classList.remove('hidden');
+        addonRow.classList.add('flex');
+        document.getElementById('summary-addon-name').innerText = bookingState.addonName;
+        document.getElementById('summary-addon-price').innerText = `+CHF ${bookingState.addonPrice}`;
+      } else {
+        addonRow.classList.add('hidden');
+        addonRow.classList.remove('flex');
+      }
+
+      document.getElementById('summary-total').innerText = `CHF ${total}`;
+      document.getElementById('summary-deposit').innerText = `CHF ${deposit}`;
+    }
+
+    function filterCategory(category, buttonEl) {
+      document.querySelectorAll('.service-filter-btn').forEach(btn => {
+        btn.className = 'service-filter-btn px-4 py-2 rounded-full bg-cream-surface text-on-surface-variant text-xs uppercase tracking-wider font-semibold hover:bg-cream-muted flex-shrink-0';
+      });
+      buttonEl.className = 'service-filter-btn px-4 py-2 rounded-full bg-espresso-dark text-surface text-xs uppercase tracking-wider font-semibold shadow-sm flex-shrink-0';
+
+      const items = document.querySelectorAll('.service-item');
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-cat') === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function navigateStep(direction) {
+      if (direction === 1 && currentStep === 4) {
+        openConfirmationModal();
+        return;
+      }
+
+      currentStep += direction;
+      if (currentStep < 1) currentStep = 1;
+      if (currentStep > totalSteps) currentStep = totalSteps;
+
+      for (let i = 1; i <= 4; i++) {
+        const container = document.getElementById(`step-${i}-container`);
+        const bar = document.getElementById(`prog-bar-${i}`);
+        if (i === currentStep) {
+          container.classList.remove('hidden');
+          container.classList.add('flex');
+          bar.className = 'h-1.5 rounded-full bg-gold-antique transition-all duration-300';
+        } else {
+          container.classList.add('hidden');
+          container.classList.remove('flex');
+          bar.className = i < currentStep 
+            ? 'h-1.5 rounded-full bg-espresso-dark transition-all duration-300' 
+            : 'h-1.5 rounded-full bg-surface-container-highest transition-all duration-300';
+        }
+      }
+
+      document.getElementById('current-step-indicator').innerText = currentStep;
+      renderStepMeta();
+
+      const prevBtn = document.getElementById('prev-step-btn');
+      if (currentStep > 1) {
+        prevBtn.classList.remove('hidden');
+      } else {
+        prevBtn.classList.add('hidden');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openConfirmationModal() {
+      document.getElementById('modal-service').innerText = bookingState.serviceName;
+      document.getElementById('modal-datetime').innerText = `${bookingState.date} • ${bookingState.time}`;
+      document.getElementById('confirmation-modal').classList.remove('hidden');
+    }
+
+    function closeConfirmationModal() {
+      document.getElementById('confirmation-modal').classList.add('hidden');
+    }
+
+    window.addEventListener('cleopatraLanguageChanged', () => {
+      renderStepMeta();
+    });
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', renderStepMeta);
+    } else {
+      renderStepMeta();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+  <title>Cleopatra Coiffeur | Haute Coiffure Atelier Suisse · Zürich & Genève</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "espresso-dark": "#12100E",
+            "charcoal-soft": "#2D2A26",
+            "gold-antique": "#997A53",
+            "gold-shimmer": "#DFCCA8",
+            "cream-surface": "#F5F0E6",
+            "cream-muted": "#EBE4D5",
+            "border-warm": "#E4DDD0",
+            "editorial-muted": "#8A8379",
+            "surface": "#FBF9F5",
+            "on-surface": "#1B1C1A",
+            "on-surface-variant": "#4D4540",
+            "surface-container": "#EFEEEA",
+            "surface-container-high": "#EAE8E4",
+            "surface-container-highest": "#E4E2DE"
+          },
+          fontFamily: {
+            sans: ["Manrope", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F0E6; }
+    ::-webkit-scrollbar-thumb { background: #997A53; border-radius: 4px; }
+  </style>
+  <script src="assets/js/i18n.js"></script>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen selection:bg-gold-shimmer selection:text-espresso-dark">
+
+  <!-- Desktop & Mobile Adaptive Top Header -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-border-warm/60 shadow-[0_1px_12px_rgba(0,0,0,0.03)] pt-safe">
+    <div class="max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-12 flex items-center justify-between">
+      
+      <!-- Logo & Brand Crest -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <img alt="Cleopatra Coiffeur Logo" class="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" src="assets/images/logo.jpg"/>
+        <div class="flex flex-col">
+          <span class="text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none" data-i18n="brand.sub">Haute Coiffure · Suisse</span>
+          <span class="text-lg md:text-xl text-espresso-dark font-serif tracking-tight leading-tight mt-0.5">CLEOPATRA ATELIER</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Bar -->
+      <nav class="hidden md:flex items-center gap-8 lg:gap-10">
+        <a href="index.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-espresso-dark relative after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:right-0 after:h-0.5 after:bg-gold-antique" data-i18n="nav.home">Atelier Home</a>
+        <a href="service-menu.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors" data-i18n="nav.services">Services</a>
+        <a href="couture-lookbook.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors" data-i18n="nav.lookbook">Lookbook</a>
+        <a href="bespoke-reservation.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors" data-i18n="nav.booking">Bespoke Booking</a>
+      </nav>
+
+      <!-- Desktop Header Actions & Language Switcher -->
+      <div class="flex items-center gap-3 sm:gap-5">
+        <!-- Language Switcher Pill (DE | EN) -->
+        <div class="flex items-center border border-border-warm rounded-full p-0.5 bg-cream-surface/90 shadow-inner">
+          <button type="button" onclick="setLanguage('de')" class="lang-btn px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider transition-all" data-lang="de">DE</button>
+          <button type="button" onclick="setLanguage('en')" class="lang-btn px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider transition-all" data-lang="en">EN</button>
+        </div>
+
+        <a href="bespoke-reservation.html" class="h-10 sm:h-11 px-4 sm:px-6 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-[0.15em] font-semibold flex items-center justify-center transition-all shadow-md shadow-espresso-dark/10 group">
+          <span data-i18n="nav.reserve">Reserve Chair</span>
+          <span class="material-symbols-outlined text-[16px] ml-1.5 transition-transform group-hover:translate-x-1">arrow_forward</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Web Content Container -->
+  <main class="flex-grow pt-20">
+
+    <!-- Cinematic Hero Section -->
+    <section class="relative w-full h-[580px] md:h-[680px] lg:h-[760px] overflow-hidden bg-espresso-dark text-surface flex items-center">
+      <!-- Full-bleed Editorial Background -->
+      <div class="absolute inset-0 bg-cover bg-center scale-105 transition-transform duration-1000 ease-out" style="background-image: url('assets/images/hero.jpg')"></div>
+      
+      <!-- Regal Atmospheric Vignette & Gradient Scrim -->
+      <div class="absolute inset-0 bg-gradient-to-r from-espresso-dark/95 via-espresso-dark/75 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-espresso-dark via-transparent to-espresso-dark/30"></div>
+
+      <!-- Hero Content Frame -->
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full h-full flex flex-col justify-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left Column: Hero Typography & Actions -->
+          <div class="lg:col-span-8 flex flex-col items-start pt-8 md:pt-0">
+            <div class="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 bg-charcoal-soft/85 backdrop-blur-md border border-gold-antique/30 rounded-full shadow-lg">
+              <span class="material-symbols-outlined text-[14px] text-gold-shimmer" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-[0.2em] font-semibold text-gold-shimmer" data-i18n="hero.kicker">Haute Coiffure Suisse · Bahnhofstrasse Zürich</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] text-surface font-serif font-normal leading-[1.08] tracking-tight mb-5" data-i18n="hero.title">
+              Architektonische Haarkunst & Botanische Farbalchemie
+            </h1>
+
+            <p class="text-base sm:text-lg text-cream-muted/90 max-w-xl mb-8 font-light leading-relaxed" data-i18n="hero.desc">
+              Exklusives Haar-Couture-Atelier für maßgeschneiderte Präzisionshaarschnitte, Pariser Balayage und nährende Alpen-Botanik-Elixiere in Zürich und Genf.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+              <a href="bespoke-reservation.html" class="h-13 px-8 bg-gold-antique hover:bg-gold-shimmer text-espresso-dark font-semibold text-xs md:text-sm uppercase tracking-[0.16em] flex items-center justify-center transition-all shadow-xl shadow-black/40">
+                <span data-i18n="hero.cta_book">Termin Reservieren</span>
+                <span class="material-symbols-outlined text-[18px] ml-2">calendar_month</span>
+              </a>
+              <a href="service-menu.html" class="h-13 px-7 bg-charcoal-soft/80 hover:bg-charcoal-soft text-surface font-semibold text-xs md:text-sm uppercase tracking-[0.16em] flex items-center justify-center transition-all border border-border-warm/20 backdrop-blur-sm">
+                <span data-i18n="hero.cta_explore">Couture Menü Entdecken</span>
+                <span class="material-symbols-outlined text-[18px] ml-2">chevron_right</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Desktop Floating Atelier Badge -->
+          <div class="hidden lg:flex lg:col-span-4 flex-col gap-4 bg-espresso-dark/85 backdrop-blur-xl p-8 rounded-2xl border border-gold-antique/30 shadow-2xl">
+            <div class="flex items-center justify-between pb-3 border-b border-charcoal-soft">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold">Today at Atelier</span>
+              <span class="inline-flex items-center gap-1.5 text-xs text-gold-shimmer font-medium">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Open for Bookings
+              </span>
+            </div>
+            <div>
+              <p class="text-lg font-serif text-surface">Private Salon Suites Available</p>
+              <p class="text-xs text-cream-muted/70 mt-1 leading-relaxed">
+                Featuring guest master artists Hélène Laurent and Antoine Moreau this week in Zürich and Genève.
+              </p>
+            </div>
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div class="bg-charcoal-soft/60 p-3 rounded">
+                <span class="text-[9px] uppercase tracking-wider text-gold-antique block">Average Rating</span>
+                <span class="text-base font-serif text-gold-shimmer font-bold">4.98 ★</span>
+              </div>
+              <div class="bg-charcoal-soft/60 p-3 rounded">
+                <span class="text-[9px] uppercase tracking-wider text-gold-antique block">Private Suites</span>
+                <span class="text-base font-serif text-gold-shimmer font-bold">100% Soundproof</span>
+              </div>
+            </div>
+            <a href="bespoke-reservation.html" class="w-full py-2.5 mt-2 bg-charcoal-soft hover:bg-gold-antique hover:text-espresso-dark text-gold-shimmer text-center text-xs uppercase tracking-wider font-semibold rounded transition-colors">
+              Schedule Private Residency
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Royal Trust Accolades Ribbon (Responsive Centered Bar) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 -mt-8 relative z-20">
+      <div class="bg-charcoal-soft text-surface rounded-2xl shadow-xl border border-charcoal-soft/80 p-6 md:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-espresso-dark/50">
+          <div class="flex items-center justify-center gap-4 py-2 md:py-0">
+            <span class="material-symbols-outlined text-gold-shimmer text-[32px]">verified</span>
+            <div class="text-left">
+              <span class="font-serif text-xl md:text-2xl text-gold-shimmer font-bold block">15+ Years</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-[0.16em] text-cream-muted/70 font-semibold">Haute Coiffure Craftsmanship</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-center gap-4 py-2 md:py-0">
+            <span class="material-symbols-outlined text-gold-shimmer text-[32px]">military_tech</span>
+            <div class="text-left">
+              <span class="font-serif text-xl md:text-2xl text-gold-shimmer font-bold block">Global Master Stylists</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-[0.16em] text-cream-muted/70 font-semibold">Zürich · Genève · St. Moritz</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-center gap-4 py-2 md:py-0">
+            <span class="material-symbols-outlined text-gold-shimmer text-[32px]">spa</span>
+            <div class="text-left">
+              <span class="font-serif text-xl md:text-2xl text-gold-shimmer font-bold block">100% Organic Care</span>
+              <span class="text-[10px] md:text-xs uppercase tracking-[0.16em] text-cream-muted/70 font-semibold">Botanical Phyto-Elixirs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Editorial Signature Services (3-Column Desktop Grid) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 md:py-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-border-warm">
+        <div>
+          <span class="text-[10px] md:text-xs uppercase tracking-[0.25em] text-gold-antique font-semibold block mb-1" data-i18n="treatments.kicker">Exklusives Behandlungsmenü</span>
+          <h2 class="text-3xl md:text-4xl text-espresso-dark font-serif font-normal" data-i18n="treatments.title">Meisterhafte Behandlungen & Rituale</h2>
+        </div>
+        <a href="service-menu.html" class="mt-4 md:mt-0 text-xs uppercase tracking-[0.18em] font-semibold text-gold-antique hover:text-espresso-dark flex items-center gap-1 transition-colors">
+          <span data-i18n="treatments.view_all">Gesamtes Menü Ansehen</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Responsive Grid: 1 col on mobile, 2 col on tablet, 3 col on desktop -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Service Card 1 -->
+        <article class="bg-cream-surface rounded-xl overflow-hidden shadow-sm flex flex-col group hover:shadow-xl transition-all duration-300">
+          <div class="relative w-full h-56 overflow-hidden">
+            <img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" data-alt="Master hair stylist sculpting sleek honey-blonde tresses in an opulent minimalist salon" src="assets/images/service_blowout.jpg"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-espresso-dark/60 via-transparent to-transparent"></div>
+            <span class="absolute top-3.5 left-3.5 bg-espresso-dark/90 backdrop-blur-md text-gold-shimmer px-3 py-1 text-[10px] uppercase font-semibold tracking-wider rounded" data-i18n="service1.tag">
+              Signature Ritual
+            </span>
+            <span class="absolute bottom-3.5 right-3.5 bg-surface/95 text-espresso-dark px-3 py-1 font-serif text-lg font-bold shadow-md rounded">
+              CHF 145
+            </span>
+          </div>
+          <div class="p-6 flex flex-col justify-between flex-grow">
+            <div>
+              <h3 class="font-serif text-xl text-espresso-dark font-medium mb-2 group-hover:text-gold-antique transition-colors" data-i18n="service1.title">Imperial Föhn-Styling & Botanische Wäsche</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed mb-4" data-i18n="service1.desc">
+                Belebende Kopfhautmassage mit Bergamotte und Alpenkräutern, gefolgt von seidigem Volumen-Blowout.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-border-warm text-editorial-muted">
+              <span class="text-xs uppercase tracking-wider flex items-center gap-1.5 font-semibold">
+                <span class="material-symbols-outlined text-[16px] text-gold-antique">schedule</span> 75 Min
+              </span>
+              <a href="bespoke-reservation.html" class="h-9 px-4 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-wider font-semibold rounded flex items-center gap-1 transition-colors">
+                <span data-i18n="service.book_btn">Behandlung Buchen</span>
+                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Service Card 2 -->
+        <article class="bg-cream-surface rounded-xl overflow-hidden shadow-sm flex flex-col group hover:shadow-xl transition-all duration-300">
+          <div class="relative w-full h-56 overflow-hidden">
+            <img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" data-alt="Sun-drenched golden balayage locks cascading over a silk gown, soft Parisian salon styling" src="assets/images/service_balayage.jpg"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-espresso-dark/60 via-transparent to-transparent"></div>
+            <span class="absolute top-3.5 left-3.5 bg-espresso-dark/90 backdrop-blur-md text-gold-shimmer px-3 py-1 text-[10px] uppercase font-semibold tracking-wider rounded" data-i18n="service2.tag">
+              Couture Farbe
+            </span>
+            <span class="absolute bottom-3.5 right-3.5 bg-surface/95 text-espresso-dark px-3 py-1 font-serif text-lg font-bold shadow-md rounded">
+              CHF 295
+            </span>
+          </div>
+          <div class="p-6 flex flex-col justify-between flex-grow">
+            <div>
+              <h3 class="font-serif text-xl text-espresso-dark font-medium mb-2 group-hover:text-gold-antique transition-colors" data-i18n="service2.title">Pariser Balayage & Glanzveredelung</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed mb-4" data-i18n="service2.desc">
+                Freihändige Pinselstrich-Lichtreflexe mit französischer Tonerde für natürliche Sonnenreflexe und seidigen Kaschmirglanz.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-border-warm text-editorial-muted">
+              <span class="text-xs uppercase tracking-wider flex items-center gap-1.5 font-semibold">
+                <span class="material-symbols-outlined text-[16px] text-gold-antique">schedule</span> 150 Min
+              </span>
+              <a href="bespoke-reservation.html" class="h-9 px-4 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-wider font-semibold rounded flex items-center gap-1 transition-colors">
+                <span data-i18n="service.book_btn">Behandlung Buchen</span>
+                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Service Card 3 -->
+        <article class="bg-cream-surface rounded-xl overflow-hidden shadow-sm flex flex-col group hover:shadow-xl transition-all duration-300">
+          <div class="relative w-full h-56 overflow-hidden">
+            <img class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" data-alt="Aromatic botanical scalp oils and 24K gold flakes applied with wooden scalp brush" src="assets/images/service_scalp_spa.jpg"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-espresso-dark/60 via-transparent to-transparent"></div>
+            <span class="absolute top-3.5 left-3.5 bg-espresso-dark/90 backdrop-blur-md text-gold-shimmer px-3 py-1 text-[10px] uppercase font-semibold tracking-wider rounded" data-i18n="service3.tag">
+              Wellness Spa
+            </span>
+            <span class="absolute bottom-3.5 right-3.5 bg-surface/95 text-espresso-dark px-3 py-1 font-serif text-lg font-bold shadow-md rounded">
+              CHF 185
+            </span>
+          </div>
+          <div class="p-6 flex flex-col justify-between flex-grow">
+            <div>
+              <h3 class="font-serif text-xl text-espresso-dark font-medium mb-2 group-hover:text-gold-antique transition-colors" data-i18n="service3.title">24K Botanisches Kopfhaut- & Haar-Spa</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed mb-4" data-i18n="service3.desc">
+                Japanisch inspiriertes Dampfritual mit 24K Goldpartikeln, Rosenquarz-Massage und nährenden bio-aktiven Peptiden.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-4 border-t border-border-warm text-editorial-muted">
+              <span class="text-xs uppercase tracking-wider flex items-center gap-1.5 font-semibold">
+                <span class="material-symbols-outlined text-[16px] text-gold-antique">schedule</span> 60 Min
+              </span>
+              <a href="bespoke-reservation.html" class="h-9 px-4 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-wider font-semibold rounded flex items-center gap-1 transition-colors">
+                <span data-i18n="service.book_btn">Behandlung Buchen</span>
+                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Metamorphosis: Interactive Before & After Reveal (Desktop 2-Column Split) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-20">
+      <div class="bg-cream-surface rounded-2xl p-6 sm:p-10 lg:p-14 shadow-sm border border-border-warm">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Left: Split Reveal Slider -->
+          <div class="lg:col-span-7">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[10px] md:text-xs uppercase tracking-[0.2em] text-gold-antique font-semibold flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[18px]">compare</span> Metamorphosis In-Residency
+              </span>
+              <span class="text-[10px] md:text-xs text-editorial-muted uppercase tracking-wider font-medium">← Drag Slider to Compare →</span>
+            </div>
+
+            <div class="relative w-full h-72 sm:h-96 md:h-[420px] rounded-xl overflow-hidden select-none cursor-ew-resize bg-surface-container-high shadow-lg" id="transformation-box">
+              <!-- After (Background) -->
+              <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('assets/images/transform_glow_after.jpg')"></div>
+              <span class="absolute bottom-4 right-4 bg-espresso-dark/90 text-gold-shimmer px-3 py-1 text-xs uppercase font-semibold tracking-wider rounded pointer-events-none" data-i18n="meta.after">
+                Nachher
+              </span>
+
+              <!-- Before (Clipped Foreground) -->
+              <div class="absolute inset-y-0 left-0 w-1/2 overflow-hidden bg-surface-container-highest border-r-2 border-gold-shimmer" id="before-layer">
+                <div class="absolute inset-y-0 left-0 w-[600px] md:w-[800px] max-w-none bg-cover bg-center" style="background-image: url('assets/images/transform_glow_before.jpg')"></div>
+                <span class="absolute bottom-4 left-4 bg-surface/90 text-espresso-dark px-3 py-1 text-xs uppercase font-semibold tracking-wider rounded pointer-events-none" data-i18n="meta.before">
+                  Vorher
+                </span>
+              </div>
+
+              <!-- Handle -->
+              <div class="absolute top-0 bottom-0 left-1/2 -ml-4 flex flex-col items-center justify-center pointer-events-none z-20" id="slider-handle">
+                <div class="w-1 h-full bg-gold-shimmer"></div>
+                <div class="absolute w-10 h-10 rounded-full bg-espresso-dark flex items-center justify-center text-gold-shimmer shadow-2xl ring-2 ring-gold-shimmer">
+                  <span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Story, Stylist & Direct Booking -->
+          <div class="lg:col-span-5 flex flex-col justify-center space-y-5">
+            <span class="text-[10px] uppercase tracking-[0.25em] text-gold-antique font-semibold" data-i18n="meta.slider_kicker">Vorher & Nachher Metamorphose</span>
+            <h3 class="text-3xl md:text-4xl text-espresso-dark font-serif font-normal leading-tight" data-i18n="meta.slider_title">The Cleopatra Signature Glow</h3>
+            <p class="text-base text-on-surface-variant leading-relaxed" data-i18n="meta.slider_desc">
+              Erleben Sie die transformative Kraft handwerklicher Balayage-Lichtreflexe, kombiniert mit nährender Schweizer Gletscher-Kaviar-Pflege.
+            </p>
+
+            <div class="bg-surface p-5 rounded-xl border border-border-warm space-y-3">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-editorial-muted uppercase tracking-wider font-medium">Lead Stylist:</span>
+                <span class="text-espresso-dark font-bold font-serif text-sm">Alexandre Dumas (Swiss Master Colorist)</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-editorial-muted uppercase tracking-wider font-medium">Session Duration:</span>
+                <span class="text-espresso-dark font-bold">3.5 Hours Total</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-editorial-muted uppercase tracking-wider font-medium">Formulation Code:</span>
+                <span class="text-gold-antique font-bold">9.34 Molten Copper + Opal Toner</span>
+              </div>
+            </div>
+
+            <a href="bespoke-reservation.html" class="h-12 w-full sm:w-auto px-8 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-widest font-semibold rounded flex items-center justify-center transition-all shadow-md">
+              <span data-i18n="service.book_btn">Behandlung Buchen</span>
+              <span class="material-symbols-outlined text-[16px] ml-2">calendar_today</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Master Stylists Spotlight (4-Column Desktop Grid) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16 md:py-24">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-border-warm">
+        <div>
+          <span class="text-[10px] md:text-xs uppercase tracking-[0.25em] text-gold-antique font-semibold block mb-1" data-i18n="team.kicker">Unser Meisterteam</span>
+          <h2 class="text-3xl md:text-4xl text-espresso-dark font-serif font-normal" data-i18n="team.title">Lernen Sie Unsere Meisterstylisten Kennen</h2>
+        </div>
+        <p class="mt-2 md:mt-0 text-sm text-editorial-muted max-w-md" data-i18n="team.desc">
+          Internationale Meisterkünstler der Haute Coiffure mit Stationen auf der Fashion Week Paris, Mailand und Zürich.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Stylist 1 -->
+        <div class="bg-cream-surface p-4 rounded-xl flex flex-col shadow-sm group hover:shadow-xl transition-all duration-300">
+          <div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden mb-4">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Hélène Laurent master hair stylist" src="assets/images/stylist_helene.jpg"/>
+            <span class="absolute bottom-2.5 left-2.5 bg-espresso-dark/90 text-gold-shimmer px-2 py-0.5 text-[9px] uppercase font-semibold rounded tracking-wider" data-i18n="team.helene_role">
+              Meister-Coloristin
+            </span>
+          </div>
+          <h3 class="font-serif text-lg text-espresso-dark font-semibold">Hélène Laurent</h3>
+          <p class="text-[10px] uppercase tracking-widest text-gold-antique font-semibold mt-0.5" data-i18n="team.helene_badge">Vogue Schweiz & Paris Alumna</p>
+          <p class="text-xs text-on-surface-variant mt-2 leading-relaxed flex-grow" data-i18n="team.helene_desc">
+            Spezialistin für mehrdimensionale, sonnengeküsste Blondübergänge und Pariser Freihand-Farbmalerei.
+          </p>
+          <a href="bespoke-reservation.html" class="mt-4 w-full py-2 bg-surface hover:bg-espresso-dark hover:text-gold-shimmer text-espresso-dark text-[11px] uppercase tracking-wider font-semibold text-center rounded transition-colors" data-i18n="team.helene_btn">
+            Hélène Buchen
+          </a>
+        </div>
+
+        <!-- Stylist 2 -->
+        <div class="bg-cream-surface p-4 rounded-xl flex flex-col shadow-sm group hover:shadow-xl transition-all duration-300">
+          <div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden mb-4">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Marcello Cruz lead hair sculptor" src="assets/images/stylist_marcello_portrait.jpg"/>
+            <span class="absolute bottom-2.5 left-2.5 bg-espresso-dark/90 text-gold-shimmer px-2 py-0.5 text-[9px] uppercase font-semibold rounded tracking-wider" data-i18n="team.marcello_role">
+              Leitender Haardesigner
+            </span>
+          </div>
+          <h3 class="font-serif text-lg text-espresso-dark font-semibold">Marcello Cruz</h3>
+          <p class="text-[10px] uppercase tracking-widest text-gold-antique font-semibold mt-0.5" data-i18n="team.marcello_badge">Mailänder Fashion Week</p>
+          <p class="text-xs text-on-surface-variant mt-2 leading-relaxed flex-grow" data-i18n="team.marcello_desc">
+            Meister des architektonischen Trockenhaarschnitts, klassischer French Bobs und markanter Wangenknochen-Silhouetten.
+          </p>
+          <a href="bespoke-reservation.html" class="mt-4 w-full py-2 bg-surface hover:bg-espresso-dark hover:text-gold-shimmer text-espresso-dark text-[11px] uppercase tracking-wider font-semibold text-center rounded transition-colors" data-i18n="team.marcello_btn">
+            Marcello Buchen
+          </a>
+        </div>
+
+        <!-- Stylist 3 -->
+        <div class="bg-cream-surface p-4 rounded-xl flex flex-col shadow-sm group hover:shadow-xl transition-all duration-300">
+          <div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden mb-4">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Antoine Moreau creative director" src="assets/images/stylist_antoine_portrait.jpg"/>
+            <span class="absolute bottom-2.5 left-2.5 bg-espresso-dark/90 text-gold-shimmer px-2 py-0.5 text-[9px] uppercase font-semibold rounded tracking-wider" data-i18n="team.antoine_role">
+              Kreativdirektor Farbe
+            </span>
+          </div>
+          <h3 class="font-serif text-lg text-espresso-dark font-semibold">Antoine Moreau</h3>
+          <p class="text-[10px] uppercase tracking-widest text-gold-antique font-semibold mt-0.5" data-i18n="team.antoine_badge">Leiter Atelier Zürich</p>
+          <p class="text-xs text-on-surface-variant mt-2 leading-relaxed flex-grow" data-i18n="team.antoine_desc">
+            Kreativer Experte für Biskuit-Balayage, hochglänzende Kaschmir-Glossings und redaktionelle High-Fashion-Looks.
+          </p>
+          <a href="bespoke-reservation.html" class="mt-4 w-full py-2 bg-surface hover:bg-espresso-dark hover:text-gold-shimmer text-espresso-dark text-[11px] uppercase tracking-wider font-semibold text-center rounded transition-colors" data-i18n="team.antoine_btn">
+            Antoine Buchen
+          </a>
+        </div>
+
+        <!-- Stylist 4 -->
+        <div class="bg-cream-surface p-4 rounded-xl flex flex-col shadow-sm group hover:shadow-xl transition-all duration-300">
+          <div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden mb-4">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Soraya Ben Amor tonal alchemist" src="assets/images/stylist_soraya.jpg"/>
+            <span class="absolute bottom-2.5 left-2.5 bg-espresso-dark/90 text-gold-shimmer px-2 py-0.5 text-[9px] uppercase font-semibold rounded tracking-wider" data-i18n="team.soraya_role">
+              Tonale Alchemistin
+            </span>
+          </div>
+          <h3 class="font-serif text-lg text-espresso-dark font-semibold">Soraya Ben Amor</h3>
+          <p class="text-[10px] uppercase tracking-widest text-gold-antique font-semibold mt-0.5" data-i18n="team.soraya_badge">Vogue Schweiz & Italia</p>
+          <p class="text-xs text-on-surface-variant mt-2 leading-relaxed flex-grow" data-i18n="team.soraya_desc">
+            Renommierte Alchemistin für sanfte Ansatzschattierungen, botanische Feuchtigkeitspressen und Glanzversiegelung.
+          </p>
+          <a href="bespoke-reservation.html" class="mt-4 w-full py-2 bg-surface hover:bg-espresso-dark hover:text-gold-shimmer text-espresso-dark text-[11px] uppercase tracking-wider font-semibold text-center rounded transition-colors" data-i18n="team.soraya_btn">
+            Soraya Buchen
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Client Praise & Haute Endorsement -->
+    <section class="bg-cream-surface py-20 px-4 sm:px-6 lg:px-12 my-8 border-y border-border-warm">
+      <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+        <div class="flex gap-1 text-gold-antique mb-6">
+          <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+          <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">star</span>
+        </div>
+        <p class="font-serif text-2xl sm:text-3xl md:text-4xl text-espresso-dark italic leading-snug mb-8" data-i18n="quote.text">
+          „Cleopatra Coiffeur ist das Kronjuwel der Schweizer Haarkunst. Die Pariser Balayage von Hélène und das edle Ambiente an der Bahnhofstrasse setzen internationale Maßstäbe.“
+        </p>
+        <div class="flex items-center gap-4">
+          <img class="w-12 h-12 rounded-full object-cover border-2 border-gold-antique/40" data-alt="Lady Camille Beaufort" src="assets/images/client_camille.jpg"/>
+          <div class="text-left">
+            <p class="font-serif text-base text-espresso-dark font-semibold">Lady Camille Beaufort</p>
+            <span class="text-[10px] text-editorial-muted uppercase tracking-widest font-semibold">Private Atelier Member · Zürich Residency</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIP Membership: The Cleopatra Coiffeur Society -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-20" id="society">
+      <div class="relative bg-espresso-dark text-surface rounded-2xl p-8 sm:p-12 lg:p-16 overflow-hidden shadow-2xl border border-charcoal-soft">
+        <div class="absolute -right-16 -bottom-16 w-80 h-80 opacity-5 pointer-events-none">
+          <span class="material-symbols-outlined text-[320px] text-gold-shimmer">crown</span>
+        </div>
+        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 space-y-4">
+            <span class="text-xs uppercase tracking-[0.25em] text-gold-shimmer font-semibold block" data-i18n="society.kicker">Exclusive Residency Privileges</span>
+            <h3 class="text-3xl sm:text-4xl text-surface font-serif font-normal" data-i18n="society.title">The Cleopatra Coiffeur Society</h3>
+            <p class="text-base text-cream-muted/80 max-w-2xl leading-relaxed" data-i18n="society.desc">
+              Enjoy unlimited weekly blowouts, guaranteed priority reservations during Zürich & Geneva Haute Couture Gala Weeks, complimentary Swiss Grand Cru & Valais sparkling wine service, and bespoke seasonal home care regimens formulated exclusively for your hair strand profile.
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 text-xs text-cream-muted/90">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-gold-shimmer text-[18px]">done</span> <span data-i18n="society.benefit1">Unlimited Blowouts</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-gold-shimmer text-[18px]">done</span> <span data-i18n="society.benefit2">Fashion Week Access</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-gold-shimmer text-[18px]">done</span> <span data-i18n="society.benefit3">Grand Cru Service</span>
+              </div>
+            </div>
+          </div>
+          <div class="lg:col-span-4 bg-charcoal-soft/80 p-8 rounded-xl border border-gold-antique/30 flex flex-col items-start justify-center">
+            <span class="text-[10px] uppercase tracking-widest text-cream-muted/70" data-i18n="society.invest_label">Membership Investment</span>
+            <div class="flex items-baseline gap-2 my-2">
+              <span class="font-serif text-4xl font-bold text-gold-shimmer">CHF 290</span>
+              <span class="text-xs uppercase tracking-wider text-cream-muted/70" data-i18n="society.per_month">/ Month</span>
+            </div>
+            <span class="text-[11px] text-gold-antique uppercase tracking-wider font-semibold mb-6" data-i18n="society.tier_note">Tier Privilège · Limited to 50 Members</span>
+            <a href="bespoke-reservation.html" class="w-full h-12 bg-gold-antique hover:bg-gold-shimmer text-espresso-dark font-semibold text-xs uppercase tracking-[0.16em] flex items-center justify-center rounded transition-all" data-i18n="society.apply_btn">
+              Apply for Membership
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pre-Footer Haute Reservation Banner -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12">
+      <div class="bg-cream-surface rounded-2xl p-8 sm:p-14 text-center flex flex-col items-center shadow-sm border border-border-warm">
+        <span class="material-symbols-outlined text-gold-antique text-[40px] mb-3">spa</span>
+        <h3 class="text-3xl sm:text-4xl text-espresso-dark font-serif font-normal mb-2" data-i18n="banner.title">Your Private Chair Awaits</h3>
+        <p class="text-base text-on-surface-variant max-w-lg mb-8 leading-relaxed" data-i18n="banner.desc">
+          Indulge in unmatched coiffeur craftsmanship. Private consultations and suites available Tuesday through Sunday in Zürich and Genève.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <a href="bespoke-reservation.html" class="w-full sm:w-auto h-13 px-8 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-[0.16em] font-semibold flex items-center justify-center rounded transition-colors shadow-md" data-i18n="banner.btn_reserve">
+            Reserve Your Appointment
+          </a>
+          <a href="tel:+41442115500" class="w-full sm:w-auto h-13 px-7 bg-surface hover:bg-cream-muted text-espresso-dark text-xs uppercase tracking-[0.16em] font-semibold flex items-center justify-center rounded transition-colors border border-border-warm" data-i18n="banner.btn_concierge">
+            Concierge: +41 44 211 55 00
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Luxury Desktop & Mobile Footer -->
+  <footer class="bg-espresso-dark text-surface pt-16 pb-28 md:pb-16 border-t border-charcoal-soft">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <!-- Col 1: Brand -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <img alt="Cleopatra Logo" class="h-8 w-auto brightness-200" src="assets/images/logo.jpg"/>
+            <span class="font-serif text-xl text-gold-shimmer tracking-tight">CLEOPATRA</span>
+          </div>
+          <p class="text-xs text-cream-muted/70 leading-relaxed" data-i18n="footer.desc">
+            Haute coiffure atelier established in Switzerland. Architectural sculpting, bespoke tonal alchemy, and ancient organic botanical hair elixirs.
+          </p>
+          <div class="flex items-center gap-3 pt-2 text-gold-shimmer">
+            <span class="text-[10px] uppercase tracking-widest text-gold-antique font-semibold" data-i18n="footer.residencies_label">Residencies:</span>
+            <span class="text-[11px] text-cream-muted" data-i18n="footer.residencies_val">Zürich · Genève · St. Moritz</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation -->
+        <div>
+          <h4 class="text-xs uppercase tracking-widest text-gold-antique mb-4 font-semibold" data-i18n="footer.exp_title">Atelier Experience</h4>
+          <ul class="space-y-2.5 text-xs text-cream-muted/80">
+            <li><a href="index.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.home">Atelier Home</a></li>
+            <li><a href="service-menu.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.services">Couture Service Menu</a></li>
+            <li><a href="couture-lookbook.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.lookbook">Saison 2025 Lookbook</a></li>
+            <li><a href="bespoke-reservation.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.booking">Private Chair Reservation</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Salons & Hours -->
+        <div>
+          <h4 class="text-xs uppercase tracking-widest text-gold-antique mb-4 font-semibold" data-i18n="footer.res_title">Private Residencies</h4>
+          <div class="space-y-3 text-xs text-cream-muted/80">
+            <div>
+              <p class="text-surface font-semibold" data-i18n="footer.zh_title">Zürich Flagship Atelier</p>
+              <p class="text-cream-muted/60" data-i18n="footer.zh_addr">Bahnhofstrasse 28, 8001 Zürich</p>
+              <p class="text-gold-shimmer text-[11px]" data-i18n="footer.zh_hours">Tue – Sat: 9:00 – 19:30</p>
+            </div>
+            <div>
+              <p class="text-surface font-semibold" data-i18n="footer.ge_title">Genève Sanctuary</p>
+              <p class="text-cream-muted/60" data-i18n="footer.ge_addr">Rue du Rhône 42, 1204 Genève</p>
+              <p class="text-gold-shimmer text-[11px]" data-i18n="footer.ge_hours">Mon – Sun: 10:00 – 20:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright -->
+      <div class="pt-8 border-t border-charcoal-soft/80 flex flex-col md:flex-row items-center justify-between gap-4 text-cream-muted/50 text-[11px]">
+        <p data-i18n="footer.rights">© 2025 Cleopatra Coiffeur Haute Atelier Suisse S.A. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-gold-shimmer transition-colors" data-i18n="footer.privacy">Confidentiality</a>
+          <a href="#" class="hover:text-gold-shimmer transition-colors" data-i18n="footer.terms">Terms of Haute Service</a>
+          <a href="#" class="hover:text-gold-shimmer transition-colors" data-i18n="footer.concierge">Concierge Protocol</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Tab Bar (Visible ONLY on Mobile < 768px) -->
+  <nav class="md:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-border-warm shadow-[0_-2px_12px_rgba(26,23,21,0.06)]">
+    <div class="flex justify-around items-center h-18 px-2">
+      <a href="index.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-espresso-dark font-bold relative after:content-[''] after:absolute after:bottom-1 after:w-1.5 after:h-1.5 after:bg-gold-antique after:rounded-full">
+        <span class="material-symbols-outlined text-[20px]">spa</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.atelier">Atelier</span>
+      </a>
+      <a href="service-menu.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-editorial-muted hover:text-espresso-dark transition-colors">
+        <span class="material-symbols-outlined text-[20px]">content_cut</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.services">Services</span>
+      </a>
+      <a href="couture-lookbook.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-editorial-muted hover:text-espresso-dark transition-colors">
+        <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.lookbook">Lookbook</span>
+      </a>
+      <a href="bespoke-reservation.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-editorial-muted hover:text-espresso-dark transition-colors">
+        <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.book">Book</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Interactive Slider Script -->
+  <script>
+    (function() {
+      const container = document.getElementById('transformation-box');
+      const beforeLayer = document.getElementById('before-layer');
+      const handle = document.getElementById('slider-handle');
+
+      if (!container || !beforeLayer || !handle) return;
+
+      let isDragging = false;
+
+      function updateSlider(clientX) {
+        const rect = container.getBoundingClientRect();
+        let offsetX = clientX - rect.left;
+        if (offsetX < 0) offsetX = 0;
+        if (offsetX > rect.width) offsetX = rect.width;
+
+        const percentage = (offsetX / rect.width) * 100;
+        beforeLayer.style.width = percentage + '%';
+        handle.style.left = percentage + '%';
+      }
+
+      container.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        updateSlider(e.clientX);
+      });
+
+      window.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        updateSlider(e.clientX);
+      });
+
+      window.addEventListener('mouseup', function() {
+        isDragging = false;
+      });
+
+      container.addEventListener('touchstart', function(e) {
+        isDragging = true;
+        if (e.touches && e.touches[0]) updateSlider(e.touches[0].clientX);
+      }, { passive: true });
+
+      window.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        if (e.touches && e.touches[0]) updateSlider(e.touches[0].clientX);
+      }, { passive: true });
+
+      window.addEventListener('touchend', function() {
+        isDragging = false;
+      });
+    })();
+  </script>
+</body>
+</html>

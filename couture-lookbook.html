@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+  <title>Couture Lookbook | Cleopatra Coiffeur Haute Atelier Suisse</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "espresso-dark": "#12100E",
+            "charcoal-soft": "#2D2A26",
+            "gold-antique": "#997A53",
+            "gold-shimmer": "#DFCCA8",
+            "cream-surface": "#F5F0E6",
+            "cream-muted": "#EBE4D5",
+            "border-warm": "#E4DDD0",
+            "editorial-muted": "#8A8379",
+            "surface": "#FBF9F5",
+            "on-surface": "#1B1C1A",
+            "on-surface-variant": "#4D4540",
+            "surface-container": "#EFEEEA",
+            "surface-container-high": "#EAE8E4",
+            "surface-container-highest": "#E4E2DE"
+          },
+          fontFamily: {
+            sans: ["Manrope", "sans-serif"],
+            serif: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { min-height: 100vh; overflow-x: hidden; }
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+    .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F0E6; }
+    ::-webkit-scrollbar-thumb { background: #997A53; border-radius: 4px; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+  <script src="assets/js/i18n.js"></script>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen selection:bg-gold-shimmer selection:text-espresso-dark">
+
+  <!-- Desktop & Mobile Adaptive Top Header -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-border-warm/60 shadow-[0_1px_12px_rgba(0,0,0,0.03)] pt-safe">
+    <div class="max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-12 flex items-center justify-between">
+      
+      <!-- Logo & Brand Crest -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <img alt="Cleopatra Coiffeur Logo" class="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" src="assets/images/logo.jpg"/>
+        <div class="flex flex-col">
+          <span class="text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none" data-i18n="brand.sub">Haute Coiffure · Suisse</span>
+          <span class="text-lg md:text-xl text-espresso-dark font-serif tracking-tight leading-tight mt-0.5">CLEOPATRA ATELIER</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Bar -->
+      <nav class="hidden md:flex items-center gap-8 lg:gap-10">
+        <a href="index.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors" data-i18n="nav.home">Atelier Home</a>
+        <a href="service-menu.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors" data-i18n="nav.services">Services</a>
+        <a href="couture-lookbook.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-espresso-dark relative after:content-[''] after:absolute after:-bottom-1.5 after:left-0 after:right-0 after:h-0.5 after:bg-gold-antique" data-i18n="nav.lookbook">Lookbook</a>
+        <a href="bespoke-reservation.html" class="text-xs uppercase tracking-[0.16em] font-semibold text-editorial-muted hover:text-espresso-dark transition-colors" data-i18n="nav.booking">Bespoke Booking</a>
+      </nav>
+
+      <!-- Desktop Header Actions & Language Switcher -->
+      <div class="flex items-center gap-3 sm:gap-5">
+        <!-- Language Switcher Pill (DE | EN) -->
+        <div class="flex items-center border border-border-warm rounded-full p-0.5 bg-cream-surface/90 shadow-inner">
+          <button type="button" onclick="setLanguage('de')" class="lang-btn px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider transition-all" data-lang="de">DE</button>
+          <button type="button" onclick="setLanguage('en')" class="lang-btn px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wider transition-all" data-lang="en">EN</button>
+        </div>
+
+        <a href="bespoke-reservation.html" class="h-10 sm:h-11 px-4 sm:px-6 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-[0.15em] font-semibold flex items-center justify-center transition-all shadow-md shadow-espresso-dark/10 group">
+          <span data-i18n="nav.reserve">Reserve Chair</span>
+          <span class="material-symbols-outlined text-[16px] ml-1.5 transition-transform group-hover:translate-x-1">arrow_forward</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-20">
+
+    <!-- Page Intro Header -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-12 pb-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-border-warm pb-6">
+        <div>
+          <span class="text-xs uppercase tracking-[0.25em] text-gold-antique font-semibold block mb-2" data-i18n="lookbook.kicker">Saison 2025 Lookbook</span>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl text-espresso-dark font-serif font-normal tracking-tight" data-i18n="lookbook.title">Metamorphosis Gallery</h1>
+        </div>
+        <div class="mt-4 md:mt-0 flex flex-col md:items-end">
+          <span class="text-xs text-editorial-muted tracking-[0.2em] uppercase font-semibold">High-Fashion Editorial Archives</span>
+          <p class="text-sm text-on-surface-variant mt-1 max-w-md md:text-right" data-i18n="lookbook.desc">
+            Curated hair artistry, tonal light-play, and bespoke sculpting crafted in our Zürich & Genève ateliers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Filter Ribbon (Centered Desktop Tabs) -->
+    <section class="sticky top-20 z-30 bg-surface/95 backdrop-blur-md py-4 border-b border-border-warm/50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-start md:justify-center gap-2.5 overflow-x-auto no-scrollbar" id="filter-tabs">
+        <button class="gallery-tab px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] font-semibold transition-all bg-espresso-dark text-gold-shimmer shadow-sm flex-shrink-0" onclick="setFilter(this, 'all')" data-i18n="lookbook.tab_all">
+          All Looks
+        </button>
+        <button class="gallery-tab px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] font-semibold transition-all bg-cream-surface text-on-surface hover:bg-cream-muted flex-shrink-0" onclick="setFilter(this, 'balayage')" data-i18n="lookbook.tab_balayage">
+          Blondes & Balayage
+        </button>
+        <button class="gallery-tab px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] font-semibold transition-all bg-cream-surface text-on-surface hover:bg-cream-muted flex-shrink-0" onclick="setFilter(this, 'curls')" data-i18n="lookbook.tab_curls">
+          Editorial Curls
+        </button>
+        <button class="gallery-tab px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] font-semibold transition-all bg-cream-surface text-on-surface hover:bg-cream-muted flex-shrink-0" onclick="setFilter(this, 'sculpted')" data-i18n="lookbook.tab_sculpted">
+          Short & Sculpted
+        </button>
+        <button class="gallery-tab px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] font-semibold transition-all bg-cream-surface text-on-surface hover:bg-cream-muted flex-shrink-0" onclick="setFilter(this, 'bridal')" data-i18n="lookbook.tab_bridal">
+          Bridal Coiffure
+        </button>
+      </div>
+    </section>
+
+    <!-- 4-Column Desktop Lookbook Grid -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="gallery-container">
+        
+        <!-- Look 1: Honey Balayage -->
+        <article class="look-card flex flex-col bg-cream-surface rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-300 border border-border-warm" data-category="balayage">
+          <div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container">
+            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Cascading warm honey blonde balayage waves" src="assets/images/look_nectar.jpg"/>
+            <span class="absolute top-3 left-3 bg-espresso-dark/85 backdrop-blur-md text-gold-shimmer text-[9px] uppercase px-2.5 py-1 rounded-full font-semibold tracking-wider" data-i18n="lookbook.badge_sig_color">
+              Signature Color
+            </span>
+            <button aria-label="Save look" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-espresso-dark hover:text-gold-antique transition-colors shadow-sm" onclick="toggleLike(this)">
+              <span class="material-symbols-outlined text-[18px]">favorite_border</span>
+            </button>
+          </div>
+          <div class="p-4 flex flex-col justify-between flex-grow">
+            <div>
+              <span class="text-[9px] uppercase text-gold-antique tracking-[0.2em] font-semibold block mb-1">4.5h Transformation</span>
+              <h3 class="font-serif text-lg text-espresso-dark font-medium leading-snug group-hover:text-gold-antique transition-colors" data-i18n="lookbook.look1_title">Imperial Nectar</h3>
+              <p class="text-xs text-editorial-muted line-clamp-1 mt-1" data-i18n="lookbook.look1_desc">Golden foil fusion & glazed root shadow</p>
+              <div class="flex flex-wrap gap-1 mt-2.5">
+                <span class="text-[9px] text-espresso-dark bg-cream-muted px-2 py-0.5 rounded font-medium">#HoneyBalayage</span>
+                <span class="text-[9px] text-espresso-dark bg-cream-muted px-2 py-0.5 rounded font-medium">#RootMelt</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-border-warm flex items-center justify-between">
+              <span class="font-serif text-base font-bold text-espresso-dark">CHF 295</span>
+              <button class="px-3.5 py-1.5 bg-espresso-dark text-gold-shimmer text-xs rounded uppercase tracking-wider font-semibold hover:bg-charcoal-soft transition-colors" onclick="openBookingDrawer('Imperial Nectar Balayage', 'CHF 295')" data-i18n="lookbook.book_look">
+                Book Look
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Look 2: Precision Cut Bob -->
+        <article class="look-card flex flex-col bg-cream-surface rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-300 border border-border-warm" data-category="sculpted">
+          <div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container">
+            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="French micro bob, precision blunt razor cut" src="assets/images/look_louvre_crop.jpg"/>
+            <span class="absolute top-3 left-3 bg-espresso-dark/85 backdrop-blur-md text-gold-shimmer text-[9px] uppercase px-2.5 py-1 rounded-full font-semibold tracking-wider" data-i18n="lookbook.badge_prec_cut">
+              Precision Cut
+            </span>
+            <button aria-label="Save look" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-espresso-dark hover:text-gold-antique transition-colors shadow-sm" onclick="toggleLike(this)">
+              <span class="material-symbols-outlined text-[18px]">favorite_border</span>
+            </button>
+          </div>
+          <div class="p-4 flex flex-col justify-between flex-grow">
+            <div>
+              <span class="text-[9px] uppercase text-gold-antique tracking-[0.2em] font-semibold block mb-1">Sculpting Architecture</span>
+              <h3 class="font-serif text-lg text-espresso-dark font-medium leading-snug group-hover:text-gold-antique transition-colors" data-i18n="lookbook.look2_title">The Louvre Crop</h3>
+              <p class="text-xs text-editorial-muted line-clamp-1 mt-1" data-i18n="lookbook.look2_desc">Architectural razor perimeter & gloss polish</p>
+              <div class="flex flex-wrap gap-1 mt-2.5">
+                <span class="text-[9px] text-espresso-dark bg-cream-muted px-2 py-0.5 rounded font-medium">#TexturedBob</span>
+                <span class="text-[9px] text-espresso-dark bg-cream-muted px-2 py-0.5 rounded font-medium">#FrenchCut</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-border-warm flex items-center justify-between">
+              <span class="font-serif text-base font-bold text-espresso-dark">CHF 165</span>
+              <button class="px-3.5 py-1.5 bg-espresso-dark text-gold-shimmer text-xs rounded uppercase tracking-wider font-semibold hover:bg-charcoal-soft transition-colors" onclick="openBookingDrawer('The Louvre Crop', 'CHF 165')" data-i18n="lookbook.book_look">
+                Book Look
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Look 3: Silk Press & Curls -->
+        <article class="look-card flex flex-col bg-cream-surface rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-300 border border-border-warm" data-category="curls">
+          <div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container">
+            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Sculpted coil crowns and silk press finish" src="assets/images/look_silk_mirage.jpg"/>
+            <span class="absolute top-3 left-3 bg-espresso-dark/85 backdrop-blur-md text-gold-shimmer text-[9px] uppercase px-2.5 py-1 rounded-full font-semibold tracking-wider" data-i18n="lookbook.badge_botanical">
+              Botanical Infusion
+            </span>
+            <button aria-label="Save look" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-espresso-dark hover:text-gold-antique transition-colors shadow-sm" onclick="toggleLike(this)">
+              <span class="material-symbols-outlined text-[18px]">favorite_border</span>
+            </button>
+          </div>
+          <div class="p-4 flex flex-col justify-between flex-grow">
+            <div>
+              <span class="text-[9px] uppercase text-gold-antique tracking-[0.2em] font-semibold block mb-1">Texture Alchemy</span>
+              <h3 class="font-serif text-lg text-espresso-dark font-medium leading-snug group-hover:text-gold-antique transition-colors" data-i18n="lookbook.look3_title">Silk Mirage</h3>
+              <p class="text-xs text-editorial-muted line-clamp-1 mt-1" data-i18n="lookbook.look3_desc">Hydration vapor press & glass veil seal</p>
+              <div class="flex flex-wrap gap-1 mt-2.5">
+                <span class="text-[9px] text-espresso-dark bg-cream-muted px-2 py-0.5 rounded font-medium">#SilkPress</span>
+                <span class="text-[9px] text-espresso-dark bg-cream-muted px-2 py-0.5 rounded font-medium">#VaporGloss</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-border-warm flex items-center justify-between">
+              <span class="font-serif text-base font-bold text-espresso-dark">CHF 195</span>
+              <button class="px-3.5 py-1.5 bg-espresso-dark text-gold-shimmer text-xs rounded uppercase tracking-wider font-semibold hover:bg-charcoal-soft transition-colors" onclick="openBookingDrawer('Silk Mirage Botanical Press', 'CHF 195')" data-i18n="lookbook.book_look">
+                Book Look
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Look 4: Bridal Chignon Royal -->
+        <article class="look-card flex flex-col bg-cream-surface rounded-2xl overflow-hidden shadow-sm group hover:shadow-xl transition-all duration-300 border border-border-warm" data-category="bridal">
+          <div class="relative w-full aspect-[3/4] overflow-hidden bg-surface-container">
+            <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Regal haute couture bridal hairstyle, intricate sculpted chignon" src="assets/images/look_empress_crown.jpg"/>
+            <span class="absolute top-3 left-3 bg-espresso-dark/85 backdrop-blur-md text-gold-shimmer text-[9px] uppercase px-2.5 py-1 rounded-full font-semibold tracking-wider" data-i18n="lookbook.badge_bridal">
+              Haute Bridal
+            </span>
+            <button aria-label="Save look" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-espresso-dark hover:text-gold-antique transition-colors shadow-sm" onclick="toggleLike(this)">
+              <span class="material-symbols-outlined text-[18px]">favorite_border</span>
+            </button>
+          </div>
+          <div class="p-4 flex flex-col justify-between flex-grow">
+            <div>
+              <span class="text-[9px] uppercase text-gold-antique tracking-[0.2em] font-semibold block mb-1">Couture Updo</span>
+              <h3 class="font-serif text-lg text-espresso-dark font-medium leading-snug group-hover:text-gold-antique transition-colors" data-i18n="lookbook.look4_title">The Empress Crown</h3>
+              <p class="text-xs text-editorial-muted line-clamp-1 mt-1" data-i18n="lookbook.look4_desc">Baroque pearl pinning & veil anchoring</p>
+              <div class="flex flex-wrap gap-1 mt-2.5">
+                <span class="text-[9px] text-espresso-dark bg-cream-muted px-2 py-0.5 rounded font-medium">#BridalChignon</span>
+                <span class="text-[9px] text-espresso-dark bg-cream-muted px-2 py-0.5 rounded font-medium">#HauteBride</span>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-border-warm flex items-center justify-between">
+              <span class="font-serif text-base font-bold text-espresso-dark">CHF 360</span>
+              <button class="px-3.5 py-1.5 bg-espresso-dark text-gold-shimmer text-xs rounded uppercase tracking-wider font-semibold hover:bg-charcoal-soft transition-colors" onclick="openBookingDrawer('The Empress Crown Bridal', 'CHF 360')" data-i18n="lookbook.book_look">
+                Book Look
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Masterpiece Breakdown: Interactive Before & After Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-16">
+      <div class="bg-espresso-dark text-surface rounded-2xl p-6 sm:p-10 lg:p-14 shadow-2xl border border-charcoal-soft relative overflow-hidden">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-charcoal-soft">
+          <div>
+            <span class="text-xs uppercase tracking-[0.25em] text-gold-shimmer font-semibold block mb-1" data-i18n="lookbook.trans_kicker">Transformation Anatomy</span>
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-serif text-surface" data-i18n="lookbook.trans_title">Copper Champagne Melt</h3>
+          </div>
+          <p class="mt-2 md:mt-0 text-sm text-cream-muted/70 max-w-md" data-i18n="lookbook.trans_desc">
+            From faded brass to an opulent, three-dimensional molten amber with velvet keratin bond seal.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Slider Container -->
+          <div class="lg:col-span-8">
+            <div class="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-xl overflow-hidden select-none touch-none shadow-xl" id="compare-container">
+              <!-- After (Background) -->
+              <img class="absolute inset-0 w-full h-full object-cover" data-alt="Luminous molten copper completed transformation" src="assets/images/transform_copper_after.jpg"/>
+              <!-- Before (Clipped Foreground) -->
+              <div class="absolute inset-0 w-1/2 overflow-hidden border-r-2 border-gold-shimmer" id="before-clip">
+                <img class="absolute inset-0 w-full h-full object-cover max-w-none" data-alt="Hair before color correction" src="assets/images/transform_copper_before.jpg" style="width: 200%;"/>
+                <span class="absolute bottom-3 left-3 bg-espresso-dark/90 text-gold-shimmer text-xs px-2.5 py-1 rounded uppercase font-semibold" data-i18n="meta.before">Before</span>
+              </div>
+              <span class="absolute bottom-3 right-3 bg-espresso-dark/90 text-gold-shimmer text-xs px-2.5 py-1 rounded uppercase font-semibold" data-i18n="meta.after">After</span>
+              <!-- Handle -->
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-gold-shimmer text-espresso-dark flex items-center justify-center shadow-2xl pointer-events-none ring-2 ring-gold-antique" id="slider-handle">
+                <span class="material-symbols-outlined text-[18px]">drag_indicator</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formula Details & Direct Booking -->
+          <div class="lg:col-span-4 flex flex-col justify-between space-y-6">
+            <div class="bg-charcoal-soft/80 p-6 rounded-xl border border-gold-antique/30 space-y-4">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold block" data-i18n="lookbook.card_title">Artisan Formula Card</span>
+              <div>
+                <p class="text-xs text-cream-muted/60" data-i18n="lookbook.formula_base_label">Base Formula</p>
+                <p class="text-sm font-semibold text-surface" data-i18n="lookbook.formula_base_val">9.34 Molten Amber + Micro-Clay Lift</p>
+              </div>
+              <div>
+                <p class="text-xs text-cream-muted/60" data-i18n="lookbook.formula_gloss_label">Gloss Sealant</p>
+                <p class="text-sm font-semibold text-surface" data-i18n="lookbook.formula_gloss_val">Opal Toner & Peptide Bond Restructure</p>
+              </div>
+              <div>
+                <p class="text-xs text-cream-muted/60" data-i18n="lookbook.formula_time_label">Session Time</p>
+                <p class="text-sm font-semibold text-gold-shimmer" data-i18n="lookbook.formula_time_val">4.0 Hours Total</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between p-4 rounded-xl bg-charcoal-soft/50">
+              <div>
+                <span class="text-[10px] uppercase tracking-wider text-cream-muted/60 block" data-i18n="lookbook.invest_est">Estimated Investment</span>
+                <span class="font-serif text-2xl font-bold text-gold-shimmer">CHF 320</span>
+              </div>
+              <button class="px-5 py-3 bg-gold-antique hover:bg-gold-shimmer text-espresso-dark text-xs uppercase tracking-wider font-semibold rounded transition-colors" onclick="openBookingDrawer('Copper Champagne Melt', 'CHF 320')" data-i18n="lookbook.book_look_btn">
+                Book This Look
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stylist of the Month: 2-Column Desktop Spotlight -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-16">
+      <div class="bg-cream-surface rounded-2xl p-8 sm:p-12 shadow-sm border border-border-warm">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-4 flex items-center gap-6">
+            <div class="relative w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden shrink-0 shadow-lg border-2 border-gold-antique/40">
+              <img class="w-full h-full object-cover" data-alt="Antoine Moreau senior hair artist" src="assets/images/stylist_antoine_square.jpg"/>
+              <div class="absolute bottom-1 right-1 w-6 h-6 bg-gold-antique rounded-full flex items-center justify-center text-surface shadow">
+                <span class="material-symbols-outlined text-[14px]">workspace_premium</span>
+              </div>
+            </div>
+            <div>
+              <span class="text-[10px] uppercase text-gold-antique tracking-[0.2em] font-semibold block" data-i18n="lookbook.spotlight_badge">Stylist of the Month</span>
+              <h4 class="font-serif text-2xl text-espresso-dark font-medium mt-1">Antoine Moreau</h4>
+              <span class="text-xs text-editorial-muted" data-i18n="team.antoine_role">Creative Color Director · Zürich Atelier</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-8 flex flex-col justify-between space-y-4">
+            <blockquote class="font-serif text-lg sm:text-xl italic text-espresso-dark/90 leading-relaxed pl-4 border-l-2 border-gold-antique" data-i18n="lookbook.spotlight_quote">
+              “This season is an homage to raw vitality—we are moving away from monochromatic blondes toward molten biscuit hues and effortless French razor architecture.”
+            </blockquote>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-xl bg-surface border border-border-warm">
+                <span class="text-[10px] uppercase tracking-wider text-gold-antique font-semibold block" data-i18n="lookbook.spotlight_dir_title">Seasonal Direction</span>
+                <p class="text-xs font-semibold text-espresso-dark mt-1" data-i18n="lookbook.spotlight_dir_val">Molten Biscuit & Cashmere High-Gloss</p>
+              </div>
+              <div class="p-4 rounded-xl bg-surface border border-border-warm">
+                <span class="text-[10px] uppercase tracking-wider text-gold-antique font-semibold block" data-i18n="lookbook.spotlight_res_title">Active Residencies</span>
+                <p class="text-xs font-semibold text-espresso-dark mt-1" data-i18n="lookbook.spotlight_res_val">Bahnhofstrasse Zürich & Rue du Rhône Genève</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4 pt-2">
+              <button class="px-6 py-3 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-widest font-semibold rounded transition-colors" onclick="openBookingDrawer('Private Consultation with Antoine Moreau', 'CHF 110')" data-i18n="lookbook.spotlight_btn">
+                Book Consultation with Antoine
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Instagram Client Communiqué Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-16">
+      <div class="rounded-2xl p-8 sm:p-12 text-center bg-cream-surface border border-border-warm flex flex-col items-center">
+        <div class="w-12 h-12 rounded-full bg-espresso-dark text-gold-shimmer flex items-center justify-center mb-4 shadow-md">
+          <span class="material-symbols-outlined text-[24px]">photo_camera</span>
+        </div>
+        <span class="text-xs uppercase text-gold-antique tracking-[0.25em] font-semibold" data-i18n="insta.kicker">Salon Communiqué</span>
+        <h4 class="text-2xl font-serif text-espresso-dark mt-1 font-medium">@cleopatra.coiffeur</h4>
+        <p class="text-sm text-editorial-muted max-w-md mt-2 leading-relaxed" data-i18n-html="insta.desc">
+          Tag your post-salon transformation with <span class="text-espresso-dark font-semibold">#CleopatraCrown</span> to be featured in our seasonal global haute gallery.
+        </p>
+
+        <!-- Desktop 4-Card Client Micro-Gallery -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 w-full max-w-3xl">
+          <div class="aspect-square rounded-xl overflow-hidden shadow-sm bg-surface-container group">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Client selfie glossy blonde balayage" src="assets/images/client_balayage_selfie.jpg"/>
+          </div>
+          <div class="aspect-square rounded-xl overflow-hidden shadow-sm bg-surface-container group">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Client mirror photo sleek espresso silk press" src="assets/images/client_silkpress_mirror.jpg"/>
+          </div>
+          <div class="aspect-square rounded-xl overflow-hidden shadow-sm bg-surface-container group">
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Haute bridal guest hair style" src="assets/images/client_bridal_guest.jpg"/>
+          </div>
+          <div class="aspect-square rounded-xl overflow-hidden shadow-sm bg-espresso-dark text-gold-shimmer flex flex-col items-center justify-center p-4">
+            <span class="font-serif text-2xl font-bold">+1.8k</span>
+            <span class="text-[9px] uppercase tracking-widest mt-1" data-i18n="insta.transformations">Transformations</span>
+          </div>
+        </div>
+
+        <a class="mt-8 inline-flex items-center gap-2 text-xs uppercase tracking-widest font-semibold text-espresso-dark hover:text-gold-antique transition-colors" href="https://instagram.com" rel="noopener noreferrer" target="_blank">
+          <span data-i18n="insta.explore">Explore Instagram Gallery</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Desktop & Mobile Centered Booking Modal -->
+    <div class="fixed inset-0 z-50 bg-espresso-dark/70 backdrop-blur-md hidden items-center justify-center p-4" id="booking-drawer">
+      <div class="bg-surface rounded-2xl p-6 sm:p-8 w-full max-w-lg overflow-y-auto flex flex-col shadow-2xl border border-border-warm animate-in fade-in zoom-in-95 duration-200">
+        <div class="flex items-center justify-between pb-4 border-b border-border-warm">
+          <div class="flex flex-col">
+            <span class="text-[10px] uppercase text-gold-antique tracking-widest font-semibold" data-i18n="modal.subtitle">Bespoke Reservation</span>
+            <h3 class="font-serif text-2xl text-espresso-dark mt-0.5" id="drawer-look-title" data-i18n="modal.title">Selected Look</h3>
+          </div>
+          <button aria-label="Close booking modal" class="w-9 h-9 rounded-full bg-cream-surface flex items-center justify-center text-espresso-dark hover:bg-cream-muted transition-colors" onclick="closeBookingDrawer()">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        <div class="py-5 flex flex-col gap-4">
+          <div class="flex items-center justify-between p-4 rounded-xl bg-cream-surface">
+            <div>
+              <span class="text-[10px] uppercase text-editorial-muted tracking-wider block font-semibold" data-i18n="lookbook.invest_est">Estimated Investment</span>
+              <span class="font-serif text-2xl text-espresso-dark font-bold" id="drawer-look-price">CHF 295</span>
+            </div>
+            <span class="text-[10px] text-gold-antique bg-surface px-3 py-1.5 rounded-full uppercase tracking-wider font-semibold border border-border-warm" data-i18n="modal.includes">
+              Includes Consultation
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs uppercase text-espresso-dark tracking-wider font-semibold" data-i18n="modal.loc_label">Choose Atelier Location</label>
+            <div class="grid grid-cols-2 gap-2.5">
+              <button class="location-btn p-3 rounded-lg bg-espresso-dark text-gold-shimmer text-left text-xs transition-all border border-espresso-dark" onclick="selectLocation(this)" type="button">
+                <span class="font-semibold block text-xs">Bahnhofstrasse, Zürich</span>
+                <span class="text-[10px] opacity-75">Bahnhofstrasse 28, 8001 Zürich</span>
+              </button>
+              <button class="location-btn p-3 rounded-lg bg-cream-surface text-espresso-dark text-left text-xs transition-all border border-border-warm hover:bg-cream-muted" onclick="selectLocation(this)" type="button">
+                <span class="font-semibold block text-xs">Rue du Rhône, Genève</span>
+                <span class="text-editorial-muted text-[10px]">Rue du Rhône 42, 1204 Genève</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs uppercase text-espresso-dark tracking-wider font-semibold" data-i18n="modal.artist_label">Preferred Master Artist</label>
+            <select class="w-full bg-surface text-espresso-dark p-3 rounded-lg text-xs border border-border-warm focus:outline-none focus:border-gold-antique">
+              <option>Antoine Moreau — Creative Color Director</option>
+              <option>Hélène Laurent — Master Colorist</option>
+              <option>Marcello Cruz — Lead Sculptor</option>
+              <option>Soraya Ben Amor — Tonal Alchemist</option>
+              <option data-i18n="modal.artist_any">First Available Master Stylist</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="text-xs uppercase text-espresso-dark tracking-wider font-semibold" data-i18n="modal.timing_label">Desired Timing Window</label>
+            <div class="flex gap-2">
+              <button class="flex-1 py-2 rounded-lg bg-espresso-dark text-gold-shimmer text-xs uppercase font-semibold" type="button" data-i18n="modal.this_week">This Week</button>
+              <button class="flex-1 py-2 rounded-lg bg-cream-surface text-espresso-dark text-xs uppercase font-semibold hover:bg-cream-muted" type="button" data-i18n="modal.next_week">Next Week</button>
+              <button class="flex-1 py-2 rounded-lg bg-cream-surface text-espresso-dark text-xs uppercase font-semibold hover:bg-cream-muted" type="button" data-i18n="modal.two_weeks">In 2 Weeks</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-3 border-t border-border-warm flex flex-col gap-2.5">
+          <button class="w-full py-3.5 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-widest font-semibold rounded-lg text-center transition-colors shadow-md" onclick="confirmBooking()" data-i18n="modal.submit_btn">
+            Proceed to Concierge Booking
+          </button>
+          <p class="text-center text-[11px] text-editorial-muted" data-i18n="modal.disclaimer">
+            No charge at time of request. A boutique liaison will confirm availability within 2 hours.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Luxury Desktop & Mobile Footer -->
+  <footer class="bg-espresso-dark text-surface pt-16 pb-28 md:pb-16 border-t border-charcoal-soft">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <img alt="Cleopatra Logo" class="h-8 w-auto brightness-200" src="assets/images/logo.jpg"/>
+            <span class="font-serif text-xl text-gold-shimmer tracking-tight">CLEOPATRA</span>
+          </div>
+          <p class="text-xs text-cream-muted/70 leading-relaxed" data-i18n="footer.desc">
+            Haute coiffure atelier established in Switzerland. Architectural sculpting, bespoke tonal alchemy, and ancient organic botanical hair elixirs.
+          </p>
+          <div class="flex items-center gap-3 pt-2 text-gold-shimmer">
+            <span class="text-[10px] uppercase tracking-widest text-gold-antique font-semibold" data-i18n="footer.residencies_label">Residencies:</span>
+            <span class="text-[11px] text-cream-muted" data-i18n="footer.residencies_val">Zürich · Genève · St. Moritz</span>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-widest text-gold-antique mb-4 font-semibold" data-i18n="footer.exp_title">Atelier Experience</h4>
+          <ul class="space-y-2.5 text-xs text-cream-muted/80">
+            <li><a href="index.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.home">Atelier Home</a></li>
+            <li><a href="service-menu.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.services">Couture Service Menu</a></li>
+            <li><a href="couture-lookbook.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.lookbook">Saison 2025 Lookbook</a></li>
+            <li><a href="bespoke-reservation.html" class="hover:text-gold-shimmer transition-colors" data-i18n="nav.booking">Private Chair Reservation</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs uppercase tracking-widest text-gold-antique mb-4 font-semibold" data-i18n="footer.res_title">Private Residencies</h4>
+          <div class="space-y-3 text-xs text-cream-muted/80">
+            <div>
+              <p class="text-surface font-semibold" data-i18n="footer.zh_title">Zürich Flagship Atelier</p>
+              <p class="text-cream-muted/60" data-i18n="footer.zh_addr">Bahnhofstrasse 28, 8001 Zürich</p>
+              <p class="text-gold-shimmer text-[11px]" data-i18n="footer.zh_hours">Tue – Sat: 9:00 – 19:30</p>
+            </div>
+            <div>
+              <p class="text-surface font-semibold" data-i18n="footer.ge_title">Genève Sanctuary</p>
+              <p class="text-cream-muted/60" data-i18n="footer.ge_addr">Rue du Rhône 42, 1204 Genève</p>
+              <p class="text-gold-shimmer text-[11px]" data-i18n="footer.ge_hours">Mon – Sun: 10:00 – 20:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-charcoal-soft/80 flex flex-col md:flex-row items-center justify-between gap-4 text-cream-muted/50 text-[11px]">
+        <p data-i18n="footer.rights">© 2025 Cleopatra Coiffeur Haute Atelier Suisse S.A. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-gold-shimmer transition-colors" data-i18n="footer.privacy">Confidentiality</a>
+          <a href="#" class="hover:text-gold-shimmer transition-colors" data-i18n="footer.terms">Terms of Haute Service</a>
+          <a href="#" class="hover:text-gold-shimmer transition-colors" data-i18n="footer.concierge">Concierge Protocol</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Tab Bar (Visible ONLY on Mobile < 768px) -->
+  <nav class="md:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-border-warm shadow-[0_-2px_12px_rgba(26,23,21,0.06)]">
+    <div class="flex justify-around items-center h-18 px-2">
+      <a href="index.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-editorial-muted hover:text-espresso-dark transition-colors">
+        <span class="material-symbols-outlined text-[20px]">spa</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.atelier">Atelier</span>
+      </a>
+      <a href="service-menu.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-editorial-muted hover:text-espresso-dark transition-colors">
+        <span class="material-symbols-outlined text-[20px]">content_cut</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.services">Services</span>
+      </a>
+      <a href="couture-lookbook.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-espresso-dark font-bold relative after:content-[''] after:absolute after:bottom-1 after:w-1.5 after:h-1.5 after:bg-gold-antique after:rounded-full">
+        <span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.lookbook">Lookbook</span>
+      </a>
+      <a href="bespoke-reservation.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-editorial-muted hover:text-espresso-dark transition-colors">
+        <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+        <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.book">Book</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Interactive Lookbook Scripts -->
+  <script>
+    function setFilter(button, category) {
+      const tabs = document.querySelectorAll('.gallery-tab');
+      tabs.forEach(tab => {
+        tab.classList.remove('bg-espresso-dark', 'text-gold-shimmer', 'shadow-sm');
+        tab.classList.add('bg-cream-surface', 'text-on-surface');
+      });
+      button.classList.add('bg-espresso-dark', 'text-gold-shimmer', 'shadow-sm');
+      button.classList.remove('bg-cream-surface', 'text-on-surface');
+
+      const cards = document.querySelectorAll('.look-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function toggleLike(btn) {
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (icon.textContent === 'favorite_border') {
+        icon.textContent = 'favorite';
+        icon.style.color = '#997A53';
+      } else {
+        icon.textContent = 'favorite_border';
+        icon.style.color = '';
+      }
+    }
+
+    (function initComparisonSlider() {
+      const container = document.getElementById('compare-container');
+      const clip = document.getElementById('before-clip');
+      const handle = document.getElementById('slider-handle');
+      if (!container || !clip || !handle) return;
+
+      let isDragging = false;
+
+      function updateSlider(clientX) {
+        const rect = container.getBoundingClientRect();
+        let pos = (clientX - rect.left) / rect.width;
+        pos = Math.max(0.05, Math.min(0.95, pos));
+        const pct = pos * 100;
+        clip.style.width = pct + '%';
+        handle.style.left = pct + '%';
+      }
+
+      container.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        updateSlider(e.clientX);
+      });
+
+      window.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        updateSlider(e.clientX);
+      });
+
+      window.addEventListener('pointerup', () => {
+        isDragging = false;
+      });
+    })();
+
+    function openBookingDrawer(title, price) {
+      const drawer = document.getElementById('booking-drawer');
+      document.getElementById('drawer-look-title').textContent = title;
+      document.getElementById('drawer-look-price').textContent = price;
+      drawer.classList.remove('hidden');
+      drawer.classList.add('flex');
+    }
+
+    function closeBookingDrawer() {
+      const drawer = document.getElementById('booking-drawer');
+      drawer.classList.add('hidden');
+      drawer.classList.remove('flex');
+    }
+
+    function selectLocation(btn) {
+      const btns = document.querySelectorAll('.location-btn');
+      btns.forEach(b => {
+        b.className = 'location-btn p-3 rounded-lg bg-cream-surface text-espresso-dark text-left text-xs transition-all border border-border-warm hover:bg-cream-muted';
+        const sub = b.querySelector('span:nth-child(2)');
+        if (sub) sub.className = 'text-editorial-muted text-[10px]';
+      });
+      btn.className = 'location-btn p-3 rounded-lg bg-espresso-dark text-gold-shimmer text-left text-xs transition-all border border-espresso-dark';
+      const activeSub = btn.querySelector('span:nth-child(2)');
+      if (activeSub) activeSub.className = 'text-[10px] opacity-75';
+    }
+
+    function confirmBooking() {
+      alert('Merci. Cleopatra Concierge has received your look inquiry.');
+      closeBookingDrawer();
+    }
+  </script>
+</body>
+</html>
