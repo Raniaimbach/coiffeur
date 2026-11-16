@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+  <title>Haute coiffure CLEOPATRA | Typografie Studio Demonstration</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  
+  <!-- All Curated Haute Couture Fonts Loaded -->
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,600&family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Tenor+Sans&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "espresso-dark": "#12100E",
+            "charcoal-soft": "#2D2A26",
+            "gold-antique": "#997A53",
+            "gold-shimmer": "#DFCCA8",
+            "cream-surface": "#F5F0E6",
+            "cream-muted": "#EBE4D5",
+            "border-warm": "#E4DDD0",
+            "editorial-muted": "#8A8379",
+            "surface": "#FBF9F5",
+            "on-surface": "#1B1C1A",
+            "on-surface-variant": "#4D4540",
+            "surface-container": "#EFEEEA",
+            "surface-container-high": "#EAE8E4",
+            "surface-container-highest": "#E4E2DE"
+          },
+          fontFamily: {
+            sans: ["var(--font-sans)", "Jost", "Manrope", "sans-serif"],
+            serif: ["var(--font-serif)", "Cormorant Garamond", "Playfair Display", "serif"],
+            brand: ["var(--font-brand)", "Cinzel", "serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { min-height: 100vh; overflow-x: hidden; }
+    .font-cormorant { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .font-jost { font-family: 'Jost', sans-serif; }
+    .font-bodoni { font-family: 'Bodoni Moda', Didot, 'Bodoni MT', serif; }
+    .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-cinzel { font-family: 'Cinzel', Georgia, serif; }
+    .font-tenor { font-family: 'Tenor Sans', sans-serif; }
+    .font-playfair { font-family: 'Playfair Display', Georgia, serif; }
+    .font-manrope { font-family: 'Manrope', sans-serif; }
+    
+    .tracking-brand-cormorant { letter-spacing: 0.22em; }
+    .tracking-brand-bodoni { letter-spacing: 0.18em; }
+    .tracking-brand-cinzel { letter-spacing: 0.26em; }
+    .tracking-brand-playfair { letter-spacing: 0.16em; }
+  </style>
+  <script src="assets/js/typography.js"></script>
+</head>
+<body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen selection:bg-gold-shimmer selection:text-espresso-dark font-sans">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-border-warm/60 shadow-sm">
+    <div class="max-w-7xl mx-auto h-20 px-4 sm:px-6 lg:px-12 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="w-10 h-10 rounded-full bg-cream-surface flex items-center justify-center text-espresso-dark hover:bg-cream-muted transition-colors" title="Zurück zum Atelier">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+        </a>
+        <a href="index.html" class="flex items-center gap-3.5 group">
+          <img alt="Haute coiffure CLEOPATRA Logo" class="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" src="assets/images/logo.png"/>
+          <div class="flex flex-col">
+            <span class="text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none">Haute Coiffure</span>
+            <span class="text-base md:text-lg text-espresso-dark font-serif tracking-tight leading-tight mt-0.5 font-medium">CLEOPATRA</span>
+          </div>
+        </a>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-xs uppercase tracking-widest font-semibold text-editorial-muted hover:text-espresso-dark transition-colors">Atelier Home</a>
+        <a href="service-menu.html" class="text-xs uppercase tracking-widest font-semibold text-editorial-muted hover:text-espresso-dark transition-colors">Services</a>
+        <a href="couture-lookbook.html" class="text-xs uppercase tracking-widest font-semibold text-editorial-muted hover:text-espresso-dark transition-colors">Lookbook</a>
+        <a href="bespoke-reservation.html" class="text-xs uppercase tracking-widest font-semibold text-editorial-muted hover:text-espresso-dark transition-colors">Booking</a>
+      </nav>
+
+      <a href="index.html" class="px-4 py-2 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-widest font-semibold rounded-lg shadow-sm transition-colors flex items-center gap-1.5">
+        <span>Atelier öffnen</span>
+        <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-28 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 space-y-12">
+
+      <!-- Hero Intro Banner -->
+      <section class="bg-cream-surface rounded-3xl p-8 sm:p-12 border border-border-warm shadow-sm relative overflow-hidden">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-gold-antique animate-pulse"></span>
+            <span class="text-xs uppercase tracking-[0.25em] text-gold-antique font-semibold">Atelier Typografie Studio</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-espresso-dark leading-tight">
+            Vergleich & Demonstration der 4 typografischen Stile
+          </h1>
+          <p class="text-sm sm:text-base text-on-surface-variant mt-4 leading-relaxed">
+            Eine passende Haute-Coiffure-Typografie definiert die Aura Ihres Salons: von königlicher französischer Zartheit über dramatische Vogue-Didone bis hin zur antiken römischen Majestät. Vergleichen Sie hier alle 4 Stile live.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 mt-6">
+            <span class="text-xs uppercase tracking-wider text-editorial-muted font-semibold">Aktiver Website-Stil:</span>
+            <span class="px-3.5 py-1.5 rounded-full bg-espresso-dark text-gold-shimmer text-xs font-serif font-medium border border-gold-antique/30" id="current-active-badge">
+              Parisian Haute Couture
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Custom Text Sandbox -->
+      <section class="bg-espresso-dark text-surface rounded-3xl p-6 sm:p-10 border border-charcoal-soft shadow-xl">
+        <div class="flex flex-col md:flex-row md:items-end justify-between pb-6 border-b border-charcoal-soft gap-4">
+          <div>
+            <span class="text-xs uppercase tracking-[0.25em] text-gold-shimmer font-semibold block mb-1">Live Interaktive Schriftprobe</span>
+            <h2 class="text-2xl sm:text-3xl font-serif text-surface">Eigener Text in allen 4 Schriften</h2>
+          </div>
+          <div class="flex-1 max-w-md">
+            <label for="custom-text-input" class="text-xs uppercase tracking-widest text-gold-antique block mb-1.5 font-semibold">Geben Sie Ihren Wunschtext ein:</label>
+            <input 
+              id="custom-text-input" 
+              type="text" 
+              value="Architektonische Haarkunst & Botanische Farbalchemie" 
+              oninput="updateCustomSpecimen(this.value)"
+              class="w-full bg-charcoal-soft text-surface px-4 py-3 rounded-xl border border-gold-antique/40 text-sm focus:outline-none focus:ring-2 focus:ring-gold-antique"
+              placeholder="z.B. Haute Coiffure Zürich · Balayage & Glanzveredelung"/>
+          </div>
+        </div>
+
+        <!-- 4 Grid Live Sandbox Results -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          
+          <!-- Box 1 -->
+          <div class="p-6 rounded-2xl bg-charcoal-soft/70 border border-gold-antique/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] uppercase tracking-widest text-gold-shimmer font-semibold">1. Parisian Haute Couture</span>
+                <span class="text-[9px] bg-gold-antique/30 text-gold-shimmer px-2 py-0.5 rounded uppercase font-semibold">Empfohlen</span>
+              </div>
+              <p class="font-cormorant text-2xl sm:text-3xl text-surface leading-snug custom-display-output">
+                Architektonische Haarkunst & Botanische Farbalchemie
+              </p>
+              <p class="font-cormorant italic text-lg text-gold-shimmer/90 mt-2 custom-display-italic">
+                „Königliche Schweizer Eleganz & Cartier-Anmut“
+              </p>
+            </div>
+            <div class="pt-4 mt-6 border-t border-charcoal-soft flex items-center justify-between">
+              <span class="font-jost text-xs text-cream-muted/70">Cormorant Garamond + Jost</span>
+              <button onclick="applyPresetFromShowcase('paris')" class="px-3.5 py-1.5 bg-gold-antique hover:bg-gold-shimmer text-espresso-dark text-xs uppercase tracking-wider font-semibold rounded transition-colors">
+                Aktivieren
+              </button>
+            </div>
+          </div>
+
+          <!-- Box 2 -->
+          <div class="p-6 rounded-2xl bg-charcoal-soft/70 border border-gold-antique/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] uppercase tracking-widest text-gold-shimmer font-semibold">2. High-Fashion Editorial (Vogue)</span>
+                <span class="text-[9px] bg-surface-container text-espresso-dark px-2 py-0.5 rounded uppercase font-semibold">Didone</span>
+              </div>
+              <p class="font-bodoni text-2xl sm:text-3xl text-surface leading-snug custom-display-output">
+                Architektonische Haarkunst & Botanische Farbalchemie
+              </p>
+              <p class="font-bodoni italic text-lg text-gold-shimmer/90 mt-2 custom-display-italic">
+                „Messerscharfe Haarlinien & Vogue-Kontrast“
+              </p>
+            </div>
+            <div class="pt-4 mt-6 border-t border-charcoal-soft flex items-center justify-between">
+              <span class="font-jakarta text-xs text-cream-muted/70">Bodoni Moda + Plus Jakarta Sans</span>
+              <button onclick="applyPresetFromShowcase('vogue')" class="px-3.5 py-1.5 bg-gold-antique hover:bg-gold-shimmer text-espresso-dark text-xs uppercase tracking-wider font-semibold rounded transition-colors">
+                Aktivieren
+              </button>
+            </div>
+          </div>
+
+          <!-- Box 3 -->
+          <div class="p-6 rounded-2xl bg-charcoal-soft/70 border border-gold-antique/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] uppercase tracking-widest text-gold-shimmer font-semibold">3. Imperial Sanctuary & Classical Chic</span>
+                <span class="text-[9px] bg-surface-container text-espresso-dark px-2 py-0.5 rounded uppercase font-semibold">Imperial</span>
+              </div>
+              <p class="font-cormorant text-2xl sm:text-3xl text-surface leading-snug custom-display-output">
+                Architektonische Haarkunst & Botanische Farbalchemie
+              </p>
+              <p class="font-cinzel text-base text-gold-shimmer tracking-widest mt-2 uppercase">
+                HAUTE COIFFURE CLEOPATRA · SUISSE
+              </p>
+            </div>
+            <div class="pt-4 mt-6 border-t border-charcoal-soft flex items-center justify-between">
+              <span class="font-tenor text-xs text-cream-muted/70">Cinzel + Cormorant + Tenor Sans</span>
+              <button onclick="applyPresetFromShowcase('imperial')" class="px-3.5 py-1.5 bg-gold-antique hover:bg-gold-shimmer text-espresso-dark text-xs uppercase tracking-wider font-semibold rounded transition-colors">
+                Aktivieren
+              </button>
+            </div>
+          </div>
+
+          <!-- Box 4 -->
+          <div class="p-6 rounded-2xl bg-charcoal-soft/70 border border-gold-antique/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[10px] uppercase tracking-widest text-gold-shimmer font-semibold">4. Modern Classic (Playfair Enhanced)</span>
+                <span class="text-[9px] bg-surface-container text-espresso-dark px-2 py-0.5 rounded uppercase font-semibold">Classic</span>
+              </div>
+              <p class="font-playfair text-2xl sm:text-3xl text-surface leading-snug custom-display-output">
+                Architektonische Haarkunst & Botanische Farbalchemie
+              </p>
+              <p class="font-playfair italic text-lg text-gold-shimmer/90 mt-2 custom-display-italic">
+                „Traditionelle Grand-Hotel-Wärme“
+              </p>
+            </div>
+            <div class="pt-4 mt-6 border-t border-charcoal-soft flex items-center justify-between">
+              <span class="font-jakarta text-xs text-cream-muted/70">Playfair Display + Plus Jakarta Sans</span>
+              <button onclick="applyPresetFromShowcase('classic')" class="px-3.5 py-1.5 bg-gold-antique hover:bg-gold-shimmer text-espresso-dark text-xs uppercase tracking-wider font-semibold rounded transition-colors">
+                Aktivieren
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Side-by-Side In-Depth Showcase Cards (All 4 Styles) -->
+      <section class="space-y-12">
+        <div>
+          <span class="text-xs uppercase tracking-[0.25em] text-gold-antique font-semibold block mb-1">Detaillierte Gegenüberstellung</span>
+          <h2 class="text-3xl font-serif text-espresso-dark">Vollständige typografische Musterkarten</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+          <!-- Card 1: Parisian Haute Couture -->
+          <div class="bg-cream-surface rounded-3xl p-8 border-2 border-gold-antique/60 shadow-lg relative flex flex-col justify-between">
+            <span class="absolute -top-3.5 left-8 bg-gold-antique text-surface text-[10px] uppercase tracking-[0.2em] font-semibold px-3 py-1 rounded-full shadow-sm">
+              Option 1 · Empfohlen für Cleopatra
+            </span>
+            <div class="space-y-6">
+              <div class="flex items-center justify-between border-b border-border-warm pb-4">
+                <div>
+                  <h3 class="font-cormorant text-3xl font-semibold text-espresso-dark leading-tight">Parisian Haute Couture</h3>
+                  <p class="text-xs text-editorial-muted font-jost mt-1">Cormorant Garamond (Serif) + Jost (Geometric Sans)</p>
+                </div>
+                <div class="text-right">
+                  <span class="font-cormorant text-2xl font-bold text-espresso-dark">CHF 295</span>
+                  <span class="text-[10px] uppercase font-jost tracking-wider text-gold-antique block">Balayage Glaze</span>
+                </div>
+              </div>
+
+              <!-- Logo & Brand Preview -->
+              <div class="p-5 rounded-2xl bg-surface border border-border-warm space-y-2">
+                <span class="text-[9px] uppercase tracking-widest text-editorial-muted font-semibold block font-jost">Logo & Brand Schriftzug:</span>
+                <div class="flex items-center gap-3">
+                  <img src="assets/images/logo.png" class="h-9 w-auto object-contain" alt="Logo"/>
+                  <div class="flex flex-col">
+                    <span class="font-jost text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none">Haute Coiffure</span>
+                    <span class="font-cormorant text-xl text-espresso-dark font-medium leading-tight mt-0.5 tracking-brand-cormorant">CLEOPATRA</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Editorial Headline Specimen -->
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold block font-jost mb-1">Kopfzeile & Editorial Zitat</span>
+                <h4 class="font-cormorant text-2xl font-medium text-espresso-dark leading-snug">
+                  Molten Amber Balayage & Schweizer Seiden-Infusion
+                </h4>
+                <blockquote class="font-cormorant italic text-base text-editorial-muted mt-2 pl-3 border-l-2 border-gold-antique">
+                  „Haarkunst ist die skulpturale Vollendung der Persönlichkeit.“
+                </blockquote>
+              </div>
+
+              <!-- Body Text & Reading Comfort -->
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold block font-jost mb-1">Fließtext (Jost 14px):</span>
+                <p class="font-jost text-sm text-on-surface-variant leading-relaxed">
+                  Freihand-Balayage mit Tonerde und pflanzlichen Seidenproteinen aus dem Wallis. Spendet tiefenwirksame Feuchtigkeit und versiegelt die Schuppenschicht für 12 Wochen anhaltenden Kristallglanz.
+                </p>
+              </div>
+
+              <!-- Glyphs & Diacritics -->
+              <div class="p-4 rounded-xl bg-surface-container-high/60 font-cormorant text-espresso-dark space-y-1">
+                <span class="text-[9px] uppercase tracking-widest font-jost text-editorial-muted block font-semibold">Umlaute & Ziffern:</span>
+                <div class="text-base tracking-widest font-medium">Ä Ö Ü ä ö ü ß · é è ê à · & % § · 0 1 2 3 4 5 6 7 8 9 · CHF € $</div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-border-warm flex items-center justify-between">
+              <span class="text-xs font-jost text-editorial-muted">Parisian Runway & Cartier Luxury</span>
+              <button onclick="applyPresetFromShowcase('paris')" class="px-5 py-2.5 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-widest font-semibold rounded-xl shadow-md transition-all">
+                Diesen Stil aktivieren
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: High-Fashion Editorial (Vogue Didone) -->
+          <div class="bg-cream-surface rounded-3xl p-8 border border-border-warm shadow-sm relative flex flex-col justify-between">
+            <span class="absolute -top-3.5 left-8 bg-charcoal-soft text-surface text-[10px] uppercase tracking-[0.2em] font-semibold px-3 py-1 rounded-full shadow-sm">
+              Option 2 · Vogue & Harper's Bazaar
+            </span>
+            <div class="space-y-6">
+              <div class="flex items-center justify-between border-b border-border-warm pb-4">
+                <div>
+                  <h3 class="font-bodoni text-3xl font-semibold text-espresso-dark leading-tight">High-Fashion Editorial</h3>
+                  <p class="text-xs text-editorial-muted font-jakarta mt-1">Bodoni Moda (Didone Serif) + Plus Jakarta Sans</p>
+                </div>
+                <div class="text-right">
+                  <span class="font-bodoni text-2xl font-bold text-espresso-dark">CHF 295</span>
+                  <span class="text-[10px] uppercase font-jakarta tracking-wider text-gold-antique block">Balayage Glaze</span>
+                </div>
+              </div>
+
+              <!-- Logo & Brand Preview -->
+              <div class="p-5 rounded-2xl bg-surface border border-border-warm space-y-2">
+                <span class="text-[9px] uppercase tracking-widest text-editorial-muted font-semibold block font-jakarta">Logo & Brand Schriftzug:</span>
+                <div class="flex items-center gap-3">
+                  <img src="assets/images/logo.png" class="h-9 w-auto object-contain" alt="Logo"/>
+                  <div class="flex flex-col">
+                    <span class="font-jakarta text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none">Haute Coiffure</span>
+                    <span class="font-bodoni text-xl text-espresso-dark font-semibold leading-tight mt-0.5 tracking-brand-bodoni">CLEOPATRA</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Editorial Headline Specimen -->
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold block font-jakarta mb-1">Kopfzeile & Editorial Zitat</span>
+                <h4 class="font-bodoni text-2xl font-normal text-espresso-dark leading-snug">
+                  Molten Amber Balayage & Schweizer Seiden-Infusion
+                </h4>
+                <blockquote class="font-bodoni italic text-base text-editorial-muted mt-2 pl-3 border-l-2 border-gold-antique">
+                  „Haarkunst ist die skulpturale Vollendung der Persönlichkeit.“
+                </blockquote>
+              </div>
+
+              <!-- Body Text & Reading Comfort -->
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold block font-jakarta mb-1">Fließtext (Plus Jakarta Sans 14px):</span>
+                <p class="font-jakarta text-sm text-on-surface-variant leading-relaxed">
+                  Freihand-Balayage mit Tonerde und pflanzlichen Seidenproteinen aus dem Wallis. Spendet tiefenwirksame Feuchtigkeit und versiegelt die Schuppenschicht für 12 Wochen anhaltenden Kristallglanz.
+                </p>
+              </div>
+
+              <!-- Glyphs & Diacritics -->
+              <div class="p-4 rounded-xl bg-surface-container-high/60 font-bodoni text-espresso-dark space-y-1">
+                <span class="text-[9px] uppercase tracking-widest font-jakarta text-editorial-muted block font-semibold">Umlaute & Ziffern:</span>
+                <div class="text-base tracking-widest font-medium">Ä Ö Ü ä ö ü ß · é è ê à · & % § · 0 1 2 3 4 5 6 7 8 9 · CHF € $</div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-border-warm flex items-center justify-between">
+              <span class="text-xs font-jakarta text-editorial-muted">Didone Drama & Modern Runway</span>
+              <button onclick="applyPresetFromShowcase('vogue')" class="px-5 py-2.5 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-widest font-semibold rounded-xl shadow-md transition-all">
+                Diesen Stil aktivieren
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 3: Imperial Sanctuary & Classical Chic -->
+          <div class="bg-cream-surface rounded-3xl p-8 border border-border-warm shadow-sm relative flex flex-col justify-between">
+            <span class="absolute -top-3.5 left-8 bg-charcoal-soft text-surface text-[10px] uppercase tracking-[0.2em] font-semibold px-3 py-1 rounded-full shadow-sm">
+              Option 3 · Römische Majestät & Antiker Glamour
+            </span>
+            <div class="space-y-6">
+              <div class="flex items-center justify-between border-b border-border-warm pb-4">
+                <div>
+                  <h3 class="font-cinzel text-2xl font-bold text-espresso-dark leading-tight tracking-wider">Imperial Sanctuary</h3>
+                  <p class="text-xs text-editorial-muted font-tenor mt-1">Cinzel (Brand) + Cormorant (Headlines) + Tenor Sans (Body)</p>
+                </div>
+                <div class="text-right">
+                  <span class="font-cormorant text-2xl font-bold text-espresso-dark">CHF 295</span>
+                  <span class="text-[10px] uppercase font-tenor tracking-wider text-gold-antique block">Balayage Glaze</span>
+                </div>
+              </div>
+
+              <!-- Logo & Brand Preview -->
+              <div class="p-5 rounded-2xl bg-surface border border-border-warm space-y-2">
+                <span class="text-[9px] uppercase tracking-widest text-editorial-muted font-semibold block font-tenor">Logo & Brand Schriftzug:</span>
+                <div class="flex items-center gap-3">
+                  <img src="assets/images/logo.png" class="h-9 w-auto object-contain" alt="Logo"/>
+                  <div class="flex flex-col">
+                    <span class="font-tenor text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none">Haute Coiffure</span>
+                    <span class="font-cinzel text-xl text-espresso-dark font-bold leading-tight mt-0.5 tracking-brand-cinzel">CLEOPATRA</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Editorial Headline Specimen -->
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold block font-tenor mb-1">Kopfzeile & Editorial Zitat</span>
+                <h4 class="font-cormorant text-2xl font-medium text-espresso-dark leading-snug">
+                  Molten Amber Balayage & Schweizer Seiden-Infusion
+                </h4>
+                <blockquote class="font-cormorant italic text-base text-editorial-muted mt-2 pl-3 border-l-2 border-gold-antique">
+                  „Haarkunst ist die skulpturale Vollendung der Persönlichkeit.“
+                </blockquote>
+              </div>
+
+              <!-- Body Text & Reading Comfort -->
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold block font-tenor mb-1">Fließtext (Tenor Sans 14px):</span>
+                <p class="font-tenor text-sm text-on-surface-variant leading-relaxed">
+                  Freihand-Balayage mit Tonerde und pflanzlichen Seidenproteinen aus dem Wallis. Spendet tiefenwirksame Feuchtigkeit und versiegelt die Schuppenschicht für 12 Wochen anhaltenden Kristallglanz.
+                </p>
+              </div>
+
+              <!-- Glyphs & Diacritics -->
+              <div class="p-4 rounded-xl bg-surface-container-high/60 font-cinzel text-espresso-dark space-y-1">
+                <span class="text-[9px] uppercase tracking-widest font-tenor text-editorial-muted block font-semibold">Umlaute & Ziffern:</span>
+                <div class="text-base tracking-widest font-semibold">Ä Ö Ü ä ö ü ß · é è ê à · & % § · 0 1 2 3 4 5 6 7 8 9 · CHF € $</div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-border-warm flex items-center justify-between">
+              <span class="text-xs font-tenor text-editorial-muted">Imperial Dignity & Botanical Sanctum</span>
+              <button onclick="applyPresetFromShowcase('imperial')" class="px-5 py-2.5 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-widest font-semibold rounded-xl shadow-md transition-all">
+                Diesen Stil aktivieren
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 4: Modern Classic (Playfair Display Enhanced) -->
+          <div class="bg-cream-surface rounded-3xl p-8 border border-border-warm shadow-sm relative flex flex-col justify-between">
+            <span class="absolute -top-3.5 left-8 bg-charcoal-soft text-surface text-[10px] uppercase tracking-[0.2em] font-semibold px-3 py-1 rounded-full shadow-sm">
+              Option 4 · Klassiker veredelt
+            </span>
+            <div class="space-y-6">
+              <div class="flex items-center justify-between border-b border-border-warm pb-4">
+                <div>
+                  <h3 class="font-playfair text-3xl font-semibold text-espresso-dark leading-tight">Modern Classic</h3>
+                  <p class="text-xs text-editorial-muted font-jakarta mt-1">Playfair Display (Optimiert) + Plus Jakarta Sans</p>
+                </div>
+                <div class="text-right">
+                  <span class="font-playfair text-2xl font-bold text-espresso-dark">CHF 295</span>
+                  <span class="text-[10px] uppercase font-jakarta tracking-wider text-gold-antique block">Balayage Glaze</span>
+                </div>
+              </div>
+
+              <!-- Logo & Brand Preview -->
+              <div class="p-5 rounded-2xl bg-surface border border-border-warm space-y-2">
+                <span class="text-[9px] uppercase tracking-widest text-editorial-muted font-semibold block font-jakarta">Logo & Brand Schriftzug:</span>
+                <div class="flex items-center gap-3">
+                  <img src="assets/images/logo.png" class="h-9 w-auto object-contain" alt="Logo"/>
+                  <div class="flex flex-col">
+                    <span class="font-jakarta text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none">Haute Coiffure</span>
+                    <span class="font-playfair text-xl text-espresso-dark font-medium leading-tight mt-0.5 tracking-brand-playfair">CLEOPATRA</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Editorial Headline Specimen -->
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold block font-jakarta mb-1">Kopfzeile & Editorial Zitat</span>
+                <h4 class="font-playfair text-2xl font-normal text-espresso-dark leading-snug">
+                  Molten Amber Balayage & Schweizer Seiden-Infusion
+                </h4>
+                <blockquote class="font-playfair italic text-base text-editorial-muted mt-2 pl-3 border-l-2 border-gold-antique">
+                  „Haarkunst ist die skulpturale Vollendung der Persönlichkeit.“
+                </blockquote>
+              </div>
+
+              <!-- Body Text & Reading Comfort -->
+              <div>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-gold-antique font-semibold block font-jakarta mb-1">Fließtext (Plus Jakarta Sans 14px):</span>
+                <p class="font-jakarta text-sm text-on-surface-variant leading-relaxed">
+                  Freihand-Balayage mit Tonerde und pflanzlichen Seidenproteinen aus dem Wallis. Spendet tiefenwirksame Feuchtigkeit und versiegelt die Schuppenschicht für 12 Wochen anhaltenden Kristallglanz.
+                </p>
+              </div>
+
+              <!-- Glyphs & Diacritics -->
+              <div class="p-4 rounded-xl bg-surface-container-high/60 font-playfair text-espresso-dark space-y-1">
+                <span class="text-[9px] uppercase tracking-widest font-jakarta text-editorial-muted block font-semibold">Umlaute & Ziffern:</span>
+                <div class="text-base tracking-widest font-medium">Ä Ö Ü ä ö ü ß · é è ê à · & % § · 0 1 2 3 4 5 6 7 8 9 · CHF € $</div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-border-warm flex items-center justify-between">
+              <span class="text-xs font-jakarta text-editorial-muted">Familiar Luxury & Enhanced Legibility</span>
+              <button onclick="applyPresetFromShowcase('classic')" class="px-5 py-2.5 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-widest font-semibold rounded-xl shadow-md transition-all">
+                Diesen Stil aktivieren
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Toast Notification for Activation -->
+      <div id="activation-toast" class="fixed top-24 right-6 z-50 bg-espresso-dark text-gold-shimmer px-6 py-4 rounded-2xl shadow-2xl border border-gold-antique/60 flex items-center gap-3 hidden animate-in fade-in slide-in-from-top-4 duration-300">
+        <span class="material-symbols-outlined text-gold-antique text-[24px]">verified</span>
+        <div>
+          <h5 class="text-xs uppercase tracking-wider font-semibold text-surface" id="toast-title">Typografie Aktiviert!</h5>
+          <p class="text-[11px] text-cream-muted/80" id="toast-desc">Der Stil wurde für die gesamte Website gespeichert.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Luxury Footer -->
+  <footer class="bg-espresso-dark text-surface py-12 border-t border-charcoal-soft font-sans">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img alt="Haute coiffure CLEOPATRA Logo" class="h-8 w-auto object-contain" src="assets/images/logo.png"/>
+        <span class="font-brand text-base text-gold-shimmer tracking-widest">CLEOPATRA ATELIER SUISSE</span>
+      </div>
+      <p class="text-xs text-cream-muted/60">
+        Haute Typografie Studio Demonstration · Alle 4 Stile sind vollständig bilingual (DE/EN) und web-optimiert.
+      </p>
+      <a href="index.html" class="text-xs uppercase tracking-widest text-gold-shimmer hover:text-surface font-semibold flex items-center gap-1">
+        <span>Zurück zur Startseite</span>
+        <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    function updateCustomSpecimen(val) {
+      const text = val.trim() || 'Architektonische Haarkunst & Botanische Farbalchemie';
+      document.querySelectorAll('.custom-display-output').forEach(el => {
+        el.textContent = text;
+      });
+    }
+
+    function applyPresetFromShowcase(presetId) {
+      applyTypography(presetId, true);
+      const preset = TYPOGRAPHY_PRESETS[presetId];
+      
+      const badge = document.getElementById('current-active-badge');
+      if (badge && preset) {
+        badge.textContent = preset.name;
+      }
+
+      const toast = document.getElementById('activation-toast');
+      const toastTitle = document.getElementById('toast-title');
+      const toastDesc = document.getElementById('toast-desc');
+      if (toast && preset) {
+        toastTitle.textContent = `${preset.name} Aktiviert!`;
+        toastDesc.textContent = `Auf der gesamten Website aktiv. Klicken Sie auf 'Atelier öffnen' um das Ergebnis zu sehen.`;
+        toast.classList.remove('hidden');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+        }, 4000);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const active = getActiveTypography();
+      const badge = document.getElementById('current-active-badge');
+      if (badge && TYPOGRAPHY_PRESETS[active]) {
+        badge.textContent = TYPOGRAPHY_PRESETS[active].name;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -114,11 +114,20 @@ const translations = {
     "society.tier_note": "Tier Privilège · Streng limitiert auf 50 Mitglieder",
     "society.apply_btn": "Mitgliedschaft Beantragen",
 
-    // Pre-Footer Haute Reservation Banner
+    // Pre-Footer Haute Reservation Banner & Map
+    "banner.kicker": "Residencies & Private Salons",
     "banner.title": "Ihr privater Platz erwartet Sie",
     "banner.desc": "Erleben Sie unvergleichliche Coiffeur-Handwerkskunst. Private Beratungen und Suiten von Dienstag bis Sonntag in Zürich und Genf verfügbar.",
     "banner.btn_reserve": "Termin Jetzt Buchen",
     "banner.btn_concierge": "Concierge: +41 44 211 55 00",
+    "banner.tab_zh": "Zürich Flagship Atelier",
+    "banner.tab_ge": "Genève Sanctuary",
+    "banner.addr_zh": "Bahnhofstrasse 28, 8001 Zürich",
+    "banner.addr_ge": "Rue du Rhône 42, 1204 Genève",
+    "banner.hours_zh": "Di – Sa: 09:00 – 19:30 · So – Mo: Auf Anfrage",
+    "banner.hours_ge": "Mo – So: 10:00 – 20:00 · Auf Voranmeldung",
+    "banner.valet": "Valet Parking & diskreter Privateingang verfügbar",
+    "banner.open_maps": "In Google Maps öffnen",
 
     // Service Menu Page
     "menu.kicker": "Saison 2025 Behandlungsmenü",
@@ -422,11 +431,20 @@ const translations = {
     "society.tier_note": "Tier Privilège · Limited to 50 Members",
     "society.apply_btn": "Apply for Membership",
 
-    // Pre-Footer Haute Reservation Banner
+    // Pre-Footer Haute Reservation Banner & Map
+    "banner.kicker": "Residencies & Private Salons",
     "banner.title": "Your Private Chair Awaits",
     "banner.desc": "Indulge in unmatched coiffeur craftsmanship. Private consultations and suites available Tuesday through Sunday in Zürich and Genève.",
     "banner.btn_reserve": "Reserve Your Appointment",
     "banner.btn_concierge": "Concierge: +41 44 211 55 00",
+    "banner.tab_zh": "Zürich Flagship Atelier",
+    "banner.tab_ge": "Genève Sanctuary",
+    "banner.addr_zh": "Bahnhofstrasse 28, 8001 Zürich",
+    "banner.addr_ge": "Rue du Rhône 42, 1204 Genève",
+    "banner.hours_zh": "Tue – Sat: 09:00 – 19:30 · Sun – Mon: By Request",
+    "banner.hours_ge": "Mon – Sun: 10:00 – 20:00 · By Appointment",
+    "banner.valet": "Complimentary valet parking & discreet VIP entrance",
+    "banner.open_maps": "Open in Google Maps",
 
     // Service Menu Page
     "menu.kicker": "Saison 2025 Treatment Menu",
@@ -734,12 +752,29 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Escape key to dismiss dropdown
+// Escape key to dismiss dropdown & mobile menu
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeLanguageDropdown();
+    closeMobileMenu();
   }
 });
+
+function toggleMobileMenu() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  if (drawer) {
+    drawer.classList.toggle('hidden');
+    document.body.classList.toggle('overflow-hidden', !drawer.classList.contains('hidden'));
+  }
+}
+
+function closeMobileMenu() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  if (drawer) {
+    drawer.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
+}
 
 function initLanguage() {
   const initialLang = getStoredLanguage();

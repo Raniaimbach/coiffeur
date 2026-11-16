@@ -4,9 +4,10 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
   <title>Haute coiffure CLEOPATRA</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png"/>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,600&family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Tenor+Sans&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script id="tailwind-config">
@@ -31,25 +32,44 @@
             "surface-container-highest": "#E4E2DE"
           },
           fontFamily: {
-            sans: ["Manrope", "sans-serif"],
-            serif: ["Playfair Display", "serif"]
+            sans: ["var(--font-sans)", "Jost", "Manrope", "sans-serif"],
+            serif: ["var(--font-serif)", "Cormorant Garamond", "Playfair Display", "serif"],
+            brand: ["var(--font-brand)", "Cinzel", "serif"]
           }
         }
       }
     };
   </script>
   <style>
+    :root {
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Jost', sans-serif;
+      --font-brand: 'Cormorant Garamond', Georgia, serif;
+      --tracking-brand: 0.22em;
+    }
     body {
       min-height: 100vh;
       overflow-x: hidden;
+      font-family: var(--font-sans), sans-serif;
     }
     .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
     .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: #F5F0E6; }
     ::-webkit-scrollbar-thumb { background: #997A53; border-radius: 4px; }
+    .font-serif {
+      font-family: var(--font-serif), Georgia, serif !important;
+    }
+    .font-sans {
+      font-family: var(--font-sans), sans-serif !important;
+    }
+    .font-brand {
+      font-family: var(--font-brand), Georgia, serif !important;
+      letter-spacing: var(--tracking-brand) !important;
+    }
   </style>
   <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/typography.js"></script>
 </head>
 <body class="bg-surface text-on-surface antialiased flex flex-col min-h-screen selection:bg-gold-shimmer selection:text-espresso-dark">
 
@@ -59,10 +79,10 @@
       
       <!-- Logo & Brand Crest -->
       <a href="index.html" class="flex items-center gap-3.5 group">
-        <img alt="Haute coiffure CLEOPATRA Logo" class="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" src="assets/images/logo.jpg"/>
+        <img alt="Haute coiffure CLEOPATRA Logo" class="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" src="assets/images/logo.png"/>
         <div class="flex flex-col">
           <span class="text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none" data-i18n="brand.sub">Haute Coiffure</span>
-          <span class="text-base md:text-lg text-espresso-dark font-serif tracking-tight leading-tight mt-0.5 font-medium" data-i18n="brand.title">CLEOPATRA</span>
+          <span class="text-base md:text-lg text-espresso-dark font-brand leading-tight mt-0.5 font-medium" data-i18n="brand.title">CLEOPATRA</span>
         </div>
       </a>
 
@@ -116,10 +136,63 @@
           <span data-i18n="nav.reserve">Reserve Chair</span>
           <span class="material-symbols-outlined text-[16px] ml-1.5 transition-transform group-hover:translate-x-1">arrow_forward</span>
         </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button 
+          type="button" 
+          id="mobile-menu-btn" 
+          onclick="toggleMobileMenu()" 
+          class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-espresso-dark hover:text-gold-antique bg-cream-surface/80 hover:bg-cream-surface border border-border-warm transition-all shadow-sm" 
+          aria-label="Navigation Menu">
+          <span class="material-symbols-outlined text-[22px]">menu</span>
+        </button>
       </div>
 
     </div>
   </header>
+
+  <!-- Mobile Slide-over Drawer -->
+  <div id="mobile-nav-drawer" class="hidden fixed inset-0 z-[100] bg-espresso-dark/60 backdrop-blur-sm transition-all" onclick="if(event.target===this)closeMobileMenu();">
+    <div class="fixed inset-y-0 right-0 max-w-xs w-full bg-surface shadow-2xl p-6 flex flex-col justify-between border-l border-border-warm">
+      <div>
+        <div class="flex items-center justify-between pb-5 border-b border-border-warm">
+          <div class="flex items-center gap-3">
+            <img alt="Haute coiffure CLEOPATRA Logo" class="h-8 w-auto object-contain" src="assets/images/logo.png"/>
+            <span class="text-xs font-brand text-espresso-dark font-medium">CLEOPATRA</span>
+          </div>
+          <button type="button" onclick="closeMobileMenu()" class="w-8 h-8 rounded-full bg-cream-surface text-editorial-muted hover:text-espresso-dark flex items-center justify-center">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+
+        <nav class="mt-6 flex flex-col space-y-2">
+          <a href="index.html" onclick="closeMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-cream-surface text-espresso-dark font-semibold text-xs uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[18px] text-gold-antique">spa</span>
+            <span data-i18n="nav.home">Atelier Home</span>
+          </a>
+          <a href="service-menu.html" onclick="closeMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-editorial-muted hover:text-espresso-dark hover:bg-cream-surface transition-colors font-semibold text-xs uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[18px] text-gold-antique">content_cut</span>
+            <span data-i18n="nav.services">Services</span>
+          </a>
+          <a href="couture-lookbook.html" onclick="closeMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-editorial-muted hover:text-espresso-dark hover:bg-cream-surface transition-colors font-semibold text-xs uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[18px] text-gold-antique">auto_awesome</span>
+            <span data-i18n="nav.lookbook">Lookbook</span>
+          </a>
+          <a href="bespoke-reservation.html" onclick="closeMobileMenu()" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-editorial-muted hover:text-espresso-dark hover:bg-cream-surface transition-colors font-semibold text-xs uppercase tracking-wider">
+            <span class="material-symbols-outlined text-[18px] text-gold-antique">calendar_month</span>
+            <span data-i18n="nav.booking">Bespoke Booking</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-border-warm space-y-3">
+        <a href="bespoke-reservation.html" onclick="closeMobileMenu()" class="w-full h-11 bg-espresso-dark text-gold-shimmer text-xs uppercase tracking-widest font-semibold flex items-center justify-center rounded-xl shadow-md">
+          <span data-i18n="nav.reserve">Reserve Chair</span>
+        </a>
+        <p class="text-[10px] text-editorial-muted text-center uppercase tracking-wider font-semibold">Zürich & Genève Flagships</p>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Web Content Container -->
   <main class="flex-grow pt-20">
@@ -563,22 +636,148 @@
       </div>
     </section>
 
-    <!-- Pre-Footer Haute Reservation Banner -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12">
-      <div class="bg-cream-surface rounded-2xl p-8 sm:p-14 text-center flex flex-col items-center shadow-sm border border-border-warm">
-        <span class="material-symbols-outlined text-gold-antique text-[40px] mb-3">spa</span>
-        <h3 class="text-3xl sm:text-4xl text-espresso-dark font-serif font-normal mb-2" data-i18n="banner.title">Your Private Chair Awaits</h3>
-        <p class="text-base text-on-surface-variant max-w-lg mb-8 leading-relaxed" data-i18n="banner.desc">
-          Indulge in unmatched coiffeur craftsmanship. Private consultations and suites available Tuesday through Sunday in Zürich and Genève.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-          <a href="bespoke-reservation.html" class="w-full sm:w-auto h-13 px-8 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-[0.16em] font-semibold flex items-center justify-center rounded transition-colors shadow-md" data-i18n="banner.btn_reserve">
-            Reserve Your Appointment
-          </a>
-          <a href="tel:+41442115500" class="w-full sm:w-auto h-13 px-7 bg-surface hover:bg-cream-muted text-espresso-dark text-xs uppercase tracking-[0.16em] font-semibold flex items-center justify-center rounded transition-colors border border-border-warm" data-i18n="banner.btn_concierge">
-            Concierge: +41 44 211 55 00
-          </a>
+    <!-- Pre-Footer Haute Reservation Banner with Interactive Residency Map -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-16">
+      <div class="bg-cream-surface rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm border border-border-warm overflow-hidden">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <!-- Left Column: Details, Atelier Switcher & Booking -->
+          <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
+            <div>
+              <div class="flex items-center gap-2 mb-2 text-gold-antique">
+                <span class="material-symbols-outlined text-[20px]">pin_drop</span>
+                <span class="text-xs uppercase tracking-[0.25em] font-semibold" data-i18n="banner.kicker">Residencies & Private Salons</span>
+              </div>
+              <h3 class="text-3xl sm:text-4xl text-espresso-dark font-serif font-normal tracking-tight leading-tight" data-i18n="banner.title">
+                Ihr privater Platz erwartet Sie
+              </h3>
+              <p class="text-sm sm:text-base text-on-surface-variant mt-3 leading-relaxed" data-i18n="banner.desc">
+                Erleben Sie unvergleichliche Coiffeur-Handwerkskunst. Private Beratungen und Suiten von Dienstag bis Sonntag in Zürich und Genf verfügbar.
+              </p>
+            </div>
+
+            <!-- Atelier City Selector Tabs -->
+            <div class="space-y-3">
+              <div class="flex p-1 bg-surface-container rounded-xl border border-border-warm">
+                <button 
+                  type="button" 
+                  id="tab-map-zh" 
+                  onclick="switchAtelierMap('zh')" 
+                  class="flex-1 py-2.5 px-4 rounded-lg font-semibold text-xs uppercase tracking-wider transition-all bg-espresso-dark text-gold-shimmer shadow-sm flex items-center justify-center gap-1.5">
+                  <span class="material-symbols-outlined text-[16px]">location_on</span>
+                  <span data-i18n="banner.tab_zh">Zürich Flagship</span>
+                </button>
+                <button 
+                  type="button" 
+                  id="tab-map-ge" 
+                  onclick="switchAtelierMap('ge')" 
+                  class="flex-1 py-2.5 px-4 rounded-lg font-semibold text-xs uppercase tracking-wider transition-all text-espresso-dark hover:text-gold-antique flex items-center justify-center gap-1.5">
+                  <span class="material-symbols-outlined text-[16px]">location_on</span>
+                  <span data-i18n="banner.tab_ge">Genève Sanctuary</span>
+                </button>
+              </div>
+
+              <!-- Location Info Box: Zürich -->
+              <div id="info-map-zh" class="p-4 rounded-2xl bg-surface border border-border-warm space-y-2 transition-all">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <span class="font-serif text-base font-semibold text-espresso-dark block">Zürich Atelier Flagship</span>
+                    <p class="text-xs text-on-surface-variant mt-0.5" data-i18n="banner.addr_zh">Bahnhofstrasse 28, 8001 Zürich</p>
+                  </div>
+                  <a id="link-maps-zh" href="https://maps.google.com/?q=Bahnhofstrasse+28,+8001+Zürich" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[11px] uppercase tracking-wider text-gold-antique hover:text-espresso-dark font-semibold flex items-center gap-1 transition-colors">
+                    <span data-i18n="banner.open_maps">In Maps öffnen</span>
+                    <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+                  </a>
+                </div>
+                <div class="pt-2 border-t border-border-warm flex flex-wrap items-center justify-between text-xs text-editorial-muted gap-2">
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[15px] text-gold-antique">schedule</span>
+                    <span data-i18n="banner.hours_zh">Di – Sa: 09:00 – 19:30 · So – Mo: Auf Anfrage</span>
+                  </span>
+                  <span class="text-[10px] text-gold-antique font-semibold flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">local_parking</span>
+                    <span data-i18n="banner.valet">Valet Parking verfügbar</span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Location Info Box: Genève (hidden by default) -->
+              <div id="info-map-ge" class="hidden p-4 rounded-2xl bg-surface border border-border-warm space-y-2 transition-all">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <span class="font-serif text-base font-semibold text-espresso-dark block">Genève Sanctuary Atelier</span>
+                    <p class="text-xs text-on-surface-variant mt-0.5" data-i18n="banner.addr_ge">Rue du Rhône 42, 1204 Genève</p>
+                  </div>
+                  <a id="link-maps-ge" href="https://maps.google.com/?q=Rue+du+Rhône+42,+1204+Genève" target="_blank" rel="noopener noreferrer" class="shrink-0 text-[11px] uppercase tracking-wider text-gold-antique hover:text-espresso-dark font-semibold flex items-center gap-1 transition-colors">
+                    <span data-i18n="banner.open_maps">In Maps öffnen</span>
+                    <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+                  </a>
+                </div>
+                <div class="pt-2 border-t border-border-warm flex flex-wrap items-center justify-between text-xs text-editorial-muted gap-2">
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[15px] text-gold-antique">schedule</span>
+                    <span data-i18n="banner.hours_ge">Mo – So: 10:00 – 20:00 · Auf Voranmeldung</span>
+                  </span>
+                  <span class="text-[10px] text-gold-antique font-semibold flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px]">local_parking</span>
+                    <span data-i18n="banner.valet">Valet Parking verfügbar</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Booking CTAs -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+              <a href="bespoke-reservation.html" class="flex-1 h-12 px-6 bg-espresso-dark hover:bg-charcoal-soft text-gold-shimmer text-xs uppercase tracking-[0.16em] font-semibold flex items-center justify-center rounded-xl transition-colors shadow-md group" data-i18n="banner.btn_reserve">
+                <span>Termin Jetzt Buchen</span>
+                <span class="material-symbols-outlined text-[16px] ml-1.5 transition-transform group-hover:translate-x-1">arrow_forward</span>
+              </a>
+              <a href="tel:+41442115500" class="h-12 px-6 bg-surface hover:bg-cream-muted text-espresso-dark text-xs uppercase tracking-[0.16em] font-semibold flex items-center justify-center rounded-xl transition-colors border border-border-warm" data-i18n="banner.btn_concierge">
+                Concierge: +41 44 211 55 00
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Luxury Map Frame -->
+          <div class="lg:col-span-6 flex flex-col space-y-3">
+            <div class="flex items-center justify-between px-1">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-gold-antique animate-pulse"></span>
+                <span class="text-xs uppercase tracking-wider font-semibold text-espresso-dark" id="map-location-badge">Bahnhofstrasse 28, 8001 Zürich</span>
+              </div>
+              <a 
+                id="map-external-link" 
+                href="https://maps.google.com/?q=Bahnhofstrasse+28,+8001+Zürich" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center gap-1.5 text-xs text-gold-antique hover:text-espresso-dark font-semibold uppercase tracking-wider transition-colors">
+                <span data-i18n="banner.open_maps">In Maps öffnen</span>
+                <span class="material-symbols-outlined text-[15px]">directions</span>
+              </a>
+            </div>
+
+            <div class="relative w-full h-[340px] sm:h-[400px] rounded-2xl overflow-hidden border-2 border-border-warm shadow-xl bg-surface-container group">
+              <!-- Map iframe with warm luxury filter -->
+              <iframe 
+                id="atelier-map-iframe"
+                title="Cleopatra Coiffeur Atelier Standort"
+                class="w-full h-full border-0 contrast-[1.02] brightness-[0.98] saturate-[0.85] transition-opacity duration-300"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=Bahnhofstrasse+28,+8001+Z%C3%BCrich&t=&z=16&ie=UTF8&iwloc=&output=embed">
+              </iframe>
+
+              <!-- Bottom overlay badge -->
+              <div class="absolute bottom-3 left-3 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-lg border border-border-warm text-[10px] text-editorial-muted font-medium pointer-events-none flex items-center gap-1.5 shadow-sm">
+                <span class="material-symbols-outlined text-[14px] text-gold-antique">explore</span>
+                <span>Haute Atelier Schweiz · Interaktive Karte</span>
+              </div>
+            </div>
+          </div>
+
         </div>
+
       </div>
     </section>
 
@@ -591,10 +790,10 @@
         <!-- Col 1: Brand -->
         <div class="space-y-4">
           <div class="flex items-center gap-3">
-            <img alt="Haute coiffure CLEOPATRA Logo" class="h-8 w-auto brightness-200" src="assets/images/logo.jpg"/>
+            <img alt="Haute coiffure CLEOPATRA Logo" class="h-9 w-auto object-contain" src="assets/images/logo.png"/>
             <div class="flex flex-col">
               <span class="text-[10px] uppercase text-gold-antique tracking-[0.25em] font-semibold leading-none" data-i18n="brand.sub">Haute Coiffure</span>
-              <span class="font-serif text-lg md:text-xl text-gold-shimmer tracking-tight mt-0.5" data-i18n="brand.title">CLEOPATRA</span>
+              <span class="text-lg md:text-xl text-gold-shimmer font-brand leading-tight mt-0.5" data-i18n="brand.title">CLEOPATRA</span>
             </div>
           </div>
           <p class="text-xs text-cream-muted/70 leading-relaxed" data-i18n="footer.desc">
@@ -648,8 +847,8 @@
   </footer>
 
   <!-- Mobile Bottom Tab Bar (Visible ONLY on Mobile < 768px) -->
-  <nav class="md:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl border-t border-border-warm shadow-[0_-2px_12px_rgba(26,23,21,0.06)]">
-    <div class="flex justify-around items-center h-18 px-2">
+  <nav class="md:hidden fixed bottom-0 w-full z-50 pb-safe bg-surface/95 backdrop-blur-xl border-t border-border-warm shadow-[0_-2px_12px_rgba(26,23,21,0.06)]">
+    <div class="flex justify-around items-center h-16 px-2">
       <a href="index.html" class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-espresso-dark font-bold relative after:content-[''] after:absolute after:bottom-1 after:w-1.5 after:h-1.5 after:bg-gold-antique after:rounded-full">
         <span class="material-symbols-outlined text-[20px]">spa</span>
         <span class="text-[9px] uppercase tracking-wider" data-i18n="mobile.atelier">Atelier</span>
@@ -719,6 +918,38 @@
         isDragging = false;
       });
     })();
+
+    function switchAtelierMap(location) {
+      const mapIframe = document.getElementById('atelier-map-iframe');
+      const mapBadge = document.getElementById('map-location-badge');
+      const mapLink = document.getElementById('map-external-link');
+      const btnZh = document.getElementById('tab-map-zh');
+      const btnGe = document.getElementById('tab-map-ge');
+      const infoZh = document.getElementById('info-map-zh');
+      const infoGe = document.getElementById('info-map-ge');
+
+      if (location === 'zh') {
+        if (mapIframe) mapIframe.src = "https://maps.google.com/maps?q=Bahnhofstrasse+28,+8001+Z%C3%BCrich&t=&z=16&ie=UTF8&iwloc=&output=embed";
+        if (mapBadge) mapBadge.textContent = "Bahnhofstrasse 28, 8001 Zürich";
+        if (mapLink) mapLink.href = "https://maps.google.com/?q=Bahnhofstrasse+28,+8001+Zürich";
+        
+        if (btnZh) btnZh.className = "flex-1 py-2.5 px-4 rounded-lg font-semibold text-xs uppercase tracking-wider transition-all bg-espresso-dark text-gold-shimmer shadow-sm flex items-center justify-center gap-1.5";
+        if (btnGe) btnGe.className = "flex-1 py-2.5 px-4 rounded-lg font-semibold text-xs uppercase tracking-wider transition-all text-espresso-dark hover:text-gold-antique flex items-center justify-center gap-1.5";
+        
+        if (infoZh) infoZh.classList.remove('hidden');
+        if (infoGe) infoGe.classList.add('hidden');
+      } else {
+        if (mapIframe) mapIframe.src = "https://maps.google.com/maps?q=Rue+du+Rh%C3%B4ne+42,+1204+Gen%C3%A8ve&t=&z=16&ie=UTF8&iwloc=&output=embed";
+        if (mapBadge) mapBadge.textContent = "Rue du Rhône 42, 1204 Genève";
+        if (mapLink) mapLink.href = "https://maps.google.com/?q=Rue+du+Rhône+42,+1204+Genève";
+        
+        if (btnGe) btnGe.className = "flex-1 py-2.5 px-4 rounded-lg font-semibold text-xs uppercase tracking-wider transition-all bg-espresso-dark text-gold-shimmer shadow-sm flex items-center justify-center gap-1.5";
+        if (btnZh) btnZh.className = "flex-1 py-2.5 px-4 rounded-lg font-semibold text-xs uppercase tracking-wider transition-all text-espresso-dark hover:text-gold-antique flex items-center justify-center gap-1.5";
+        
+        if (infoGe) infoGe.classList.remove('hidden');
+        if (infoZh) infoZh.classList.add('hidden');
+      }
+    }
   </script>
 </body>
 </html>

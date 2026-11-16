@@ -1,0 +1,37 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/services"
+  to = "/service-menu.html"
+  status = 200
+
+[[redirects]]
+  from = "/menu"
+  to = "/service-menu.html"
+  status = 200
+
+[[redirects]]
+  from = "/lookbook"
+  to = "/couture-lookbook.html"
+  status = 200
+
+[[redirects]]
+  from = "/gallery"
+  to = "/couture-lookbook.html"
+  status = 200
+
+[[redirects]]
+  from = "/booking"
+  to = "/bespoke-reservation.html"
+  status = 200
+
+[[redirects]]
+  from = "/reservation"
+  to = "/bespoke-reservation.html"
+  status = 200
+
+[[redirects]]
+  from = "/typography"
+  to = "/typography-preview.html"
+  status = 200

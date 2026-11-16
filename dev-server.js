@@ -61,6 +61,37 @@ const liveReloadSnippet = `
 </script>
 `;
 
+const ROUTE_ALIASES = {
+  '/': 'index.html',
+  '/index': 'index.html',
+  '/home': 'index.html',
+  '/atelier': 'index.html',
+  '/services': 'service-menu.html',
+  '/services.html': 'service-menu.html',
+  '/service-menu': 'service-menu.html',
+  '/service-menu.html': 'service-menu.html',
+  '/service': 'service-menu.html',
+  '/menu': 'service-menu.html',
+  '/menu.html': 'service-menu.html',
+  '/lookbook': 'couture-lookbook.html',
+  '/lookbook.html': 'couture-lookbook.html',
+  '/couture-lookbook': 'couture-lookbook.html',
+  '/couture-lookbook.html': 'couture-lookbook.html',
+  '/gallery': 'couture-lookbook.html',
+  '/gallery.html': 'couture-lookbook.html',
+  '/booking': 'bespoke-reservation.html',
+  '/booking.html': 'bespoke-reservation.html',
+  '/reservation': 'bespoke-reservation.html',
+  '/reservation.html': 'bespoke-reservation.html',
+  '/bespoke-reservation': 'bespoke-reservation.html',
+  '/bespoke-reservation.html': 'bespoke-reservation.html',
+  '/book': 'bespoke-reservation.html',
+  '/reserve': 'bespoke-reservation.html',
+  '/typography': 'typography-preview.html',
+  '/typography-preview': 'typography-preview.html',
+  '/typography-preview.html': 'typography-preview.html'
+};
+
 function handleRequest(req, res) {
   const host = req.headers.host || 'localhost';
   const url = new URL(req.url, `http://${host}`);
@@ -80,12 +111,15 @@ function handleRequest(req, res) {
     return;
   }
 
-  // Resolve path to local filesystem
-  if (pathname === '/' || pathname === '') {
-    pathname = '/index.html';
-  }
+  // Normalize path: strip trailing slashes (except root)
+  const cleanPath = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
 
-  let filePath = path.join(ROOT_DIR, pathname);
+  let filePath;
+  if (ROUTE_ALIASES[cleanPath]) {
+    filePath = path.join(ROOT_DIR, ROUTE_ALIASES[cleanPath]);
+  } else {
+    filePath = path.join(ROOT_DIR, cleanPath);
+  }
 
   // If path has no extension and file doesn't exist, try appending .html
   if (!path.extname(filePath) && !fs.existsSync(filePath) && fs.existsSync(filePath + '.html')) {
@@ -94,13 +128,15 @@ function handleRequest(req, res) {
 
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
+      console.log(`[dev 404] ${req.method} ${pathname} -> Not Found`);
       res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-      res.end(`<h1>404 Not Found</h1><p>File <code>${pathname}</code> could not be found.</p><p><a href="/">Return Home</a></p>`);
+      res.end(`<!DOCTYPE html><html><head><title>404 Not Found</title><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:sans-serif;padding:3rem;line-height:1.6;background:#FBF9F5;color:#12100E;}a{color:#997A53;font-weight:600;}</style></head><body><h1>404 Nicht Gefunden / Page Not Found</h1><p>Der Pfad <code>${pathname}</code> konnte nicht gefunden werden.</p><p><a href="/">Zurück zur Startseite / Return to Atelier Home</a></p></body></html>`);
       return;
     }
 
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    console.log(`[dev 200] ${req.method} ${pathname} -> ${path.basename(filePath)}`);
 
     if (ext === '.html') {
       fs.readFile(filePath, 'utf8', (readErr, content) => {
